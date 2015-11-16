@@ -89,11 +89,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         etPwd.setOnFocusChangeListener(new myOnFocusChangeListener());
         etConfirmPwd.setOnFocusChangeListener(new myOnFocusChangeListener());
         etTelephone.setOnFocusChangeListener(new myOnFocusChangeListener());
-        etVerificationCode.setOnFocusChangeListener(new myOnFocusChangeListener());
+//        etVerificationCode.setOnFocusChangeListener(new myOnFocusChangeListener());
 
-        btGetVerificationCode.setOnClickListener(this);
-        btRegister.setOnClickListener(this);
+//        btGetVerificationCode.setOnClickListener(this);
         agreePtotocl.setOnClickListener(this);
+        btRegister.setOnClickListener(this);
     }
     @Override
     public void onClick(View view) {
@@ -106,7 +106,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result=RequestByXML.postByRegister("http://61.166.155.44:9012/AnimeApp/User/Registe","chenyu","123456","18676081261","2657607916@qq.com","男","1990-10-10","湖南");
+//                      String result=RequestByXML.postByRegister("http://61.166.155.44:9012/AnimeApp/User/Registe","chenyu","123456","18676081261","2657607916@qq.com","男","1990-10-10","湖南");
+                        String result=RequestByXML.postByRegister("http://61.166.155.44:9012/AnimeApp/User/Registe","chenyu","123456","18676081261","2657607916@qq.com",null,null,null);
+
                         System.out.print("result"+result);
                         Log.i("result",result);
                         try {
