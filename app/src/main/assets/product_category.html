@@ -1,0 +1,119 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-商品类目选择页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--列表主体-->
+	<section class="tcl_store_list">
+		<ul>
+			<!-- <li>
+				<a href="#">
+					<div class="pic"><img src="img/adimg/tcl_pic.jpg"></div>
+					<h3>电视</h3>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="pic"><img src="img/adimg/tcl_pic1.jpg"></div>
+					<h3>手机</h3>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="pic"><img src="img/adimg/tcl_pic2.jpg"></div>
+					<h3>空调</h3>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="pic"><img src="img/adimg/tcl_pic3.jpg"></div>
+					<h3>冰箱</h3>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="pic"><img src="img/adimg/tcl_pic5.jpg"></div>
+					<h3>洗衣机</h3>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="pic"><img src="img/adimg/tcl_pic4.jpg"></div>
+					<h3>小家电</h3>
+				</a>
+			</li> -->
+		</ul>
+	</section><!--列表主体 end-->
+</body>
+<script type="text/javascript">
+	$(function(){
+		loadData();
+	})
+	
+	function loadData(){
+		var url=getProjectPath()+"/app/decorate/getComp";
+		var goDatailUrl = getProjectPath()+"/app/distribution_goods.html?uuid=";
+		$.ajax({
+			type:"get",
+			async:false,
+			url:url,
+			data:{"compId":"categorys","paramName":"param_categoryuuids","pageName":"index"},
+			jsonp:"jsonpcallback",
+			dataType : "jsonp",//数据类型为jsonp
+			success : function(json){
+				var result=eval(json);
+				if(result !=null && "" !=result){
+					var data="";
+					$.each(result, function(i, field) {
+						 data +="<li>";
+							// data +="<a href="+goDatailUrl+field.uuid+">";
+							 data +="<a href='javascript:goDistributionGoodsList(\""+field.uuid+"\")'>";
+							 data +="<div class='pic'><img src='"+field.navImageUrl+"'></div>";
+							 data +="<h3>"+field.categoryName+"</h3>";
+							 data +="</a>";
+							 data +="</li>";
+			        });
+					 $(".tcl_store_list ul").append(data);
+				}
+			}
+		});
+		/* var pathName = document.location.pathname; 
+		var index = pathName.substr(1).indexOf("/"); 
+		var result = pathName.substr(0,index+1); 
+		var goDatailUrl = result+"/app/distribution_goods.html?uuid="; */
+		/* $.getJSON(result + "/app/decorate/getComp",{"compId":"categorys","paramName":"param_categoryuuids","pageName":"index"},function(json){
+			var data="";
+			 $.each(json, function(i, field){
+				 data +="<li>";
+				// data +="<a href="+goDatailUrl+field.uuid+">";
+				 data +="<a href='javascript:goDistributionGoods(\""+field.uuid+"\")'>";
+				 data +="<div class='pic'><img src='"+field.navImageUrl+"'></div>";
+				 data +="<h3>"+field.categoryName+"</h3>";
+				 data +="</a>";
+				 data +="</li>";
+			 });
+			 $(".tcl_store_list ul").append(data);
+		}); */
+	}
+	//跳转到分销商品列表
+	 function goDistributionGoodsList(uuid){
+		//调用原生接口
+		App.run('goDistributionGoodsList', {uuid：uuid});
+	} 
+</script>
+</html>

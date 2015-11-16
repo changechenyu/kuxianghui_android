@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_bg"
+    android:gravity="center_horizontal" >
+
+    <LinearLayout android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|center_vertical">
+        <RadioGroup android:id="@+id/rg_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/login_content_margin_left" android:paddingRight="50dp"
+            >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="按商品链接"
+            android:id="@+id/rb_link"
+            android:button="@drawable/share_radio_button"
+            android:checked="true"
+            android:layout_weight="1"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="按二维码"
+            android:button="@drawable/share_radio_button"
+            android:id="@+id/rb_qrcode"
+            android:checked="false"
+            android:layout_weight="1"
+            />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/ll_qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:layout_marginLeft="@dimen/login_content_margin_left"
+        android:layout_marginRight="@dimen/login_content_margin_right"
+        android:orientation="vertical">
+        <TextView android:id="@+id/tv_title"
+            android:text="@string/share_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout android:id="@+id/rl_qrcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/rl_top"
+            android:gravity="center_horizontal|center_vertical">
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/iv_qrcode"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/rb_check_checked" />
+            <EditText
+                android:id="@+id/et_share"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/share_content_bg"
+                android:gravity="start"
+                android:hint="@string/share_edittext_hint"
+                android:layout_marginLeft="8dp"
+                android:padding="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/share_content_height"
+        android:layout_below="@+id/ll_qrcode"
+        android:layout_marginLeft="@dimen/login_content_margin_left"
+        android:layout_marginRight="@dimen/login_content_margin_right"
+        android:layout_marginTop="@dimen/share_content_margin_top"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_commodity_pic"
+            android:layout_width="@dimen/share_imageview_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/iv_commodity_pic"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_commodity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:textSize="18dp"
+                android:maxLines="2" />
+
+            <TextView
+                android:id="@+id/tv_commodity_detail_appraise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                 android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="16dp"
+                android:textColor="@color/text_gray" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/share_menu_bg"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/share_layout_padding_bottom"
+        android:paddingBottom="@dimen/share_layout_padding_bottom"
+        android:paddingLeft="@dimen/share_layout_padding_left"
+        android:paddingRight="@dimen/share_layout_padding_right" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/share_menu_bg"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_wx_moments"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_wechatmoment"
+                android:text="@string/share_weixin_cicle" />
+
+            <Button
+                android:id="@+id/btn_wx_friend"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_wechat"
+                android:text="@string/share_weixin" />
+
+            <Button
+                android:id="@+id/btn_sina"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_weibo"
+                android:text="@string/share_sina" />
+
+            <Button
+                android:id="@+id/btn_qzone"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_qzone"
+                android:text="@string/share_qq_zone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/share_menu_bg"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_tencent"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_message"
+                android:text="@string/share_message" />
+
+            <Button
+                android:id="@+id/btn_qq"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_qq"
+                android:text="@string/share_qq" />
+
+            <Button
+                android:id="@+id/btn_link"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_link"
+                android:text="@string/share_link" />
+
+            <Button
+                android:id="@+id/btn_mail"
+                style="@style/share_button_style"
+                android:drawableTop="@drawable/share_icon_socialicon_email"
+                android:text="@string/share_email" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

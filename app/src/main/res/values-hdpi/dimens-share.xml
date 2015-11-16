@@ -1,0 +1,5 @@
+<resources>
+	<!-- share ativity -->
+	<dimen name="share_edittext_height">100dp</dimen>
+    <dimen name="share_layout_padding_bottom">5dp</dimen>
+</resources>

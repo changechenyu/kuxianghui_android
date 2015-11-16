@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_bg">#eeeeef</color>
+    <color name="share_menu_bg">#ffffff</color>
+    <color name="share_content_bg">#ffffff</color>
+
+    <color name="text_share_button">#717071</color>
+
+    <color name="share_button_normal_bg">#f2f2f2</color>
+    <color name="share_button_pressed_bg">#cccccc</color>
+</resources>

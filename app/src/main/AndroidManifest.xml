@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.kuyu.kuxianghui">
+
+    <!-- get permission for read to SDCard -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 添加可以向外拨打电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- wifi权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 查询网络状态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--百度地图定位的权限-->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- QQ、QQ空间所需权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+
+	<!-- get permission for read to SDCard -->
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<!-- 添加可以向外拨打电话的权限 -->
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<!-- 在SDCard中创建与删除文件权限 -->
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<!-- 往SDCard写入数据权限 -->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<!-- wifi权限 -->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<!-- 查询网络状态权限 -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<!-- QQ、QQ空间所需权限 -->
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.SET_DEBUG_APP" />
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.USE_CREDENTIALS" />
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.READ_LOGS" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+	<uses-feature android:name="android.hardware.camera" />
+	<uses-feature android:name="android.hardware.camera.autofocus" />
+
+	<!-- 个推SDK权限配置开始 -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<!-- 支持iBeancon 需要蓝牙权限 -->
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<!-- 支持个推3.0 电子围栏功能 -->
+	<!-- 浮动通知权限 -->
+	<!-- 自定义权限 -->
+	<uses-permission android:name="getui.permission.GetuiService.com.kuyu.kuxianghui" />
+
+	<permission
+		android:name="getui.permission.GetuiService.com.kuyu.kuxianghui"
+		android:protectionLevel="normal" >
+	</permission>
+
+	<!-- 个推SDK权限配置结束 -->
+
+
+    <!-- 银联sdk配置 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
+    <!-- add new  permission 2015-9-16 12:17:28 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc.hce" />
+    <!-- 如果选择智能卡方式(即sdkPro)集成，需要额外定义以下权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+	<application
+			android:allowBackup="true"
+			android:icon="@drawable/app_logo"
+			android:label="@string/app_name"
+			android:theme="@android:style/Theme.Holo.Light">
+		<activity
+			android:name=".ui.SplashActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+				android:name=".ui.HomeActivity"
+				android:screenOrientation="portrait"
+				android:launchMode ="singleTask"
+				android:label="@string/app_name">
+			<!--<intent-filter>-->
+				<!--<action android:name="android.intent.action.MAIN" />-->
+				<!--<category android:name="android.intent.category.LAUNCHER" />-->
+			<!--</intent-filter>-->
+		</activity>
+		<activity
+				android:name=".ui.LocateActivity"
+				android:screenOrientation="portrait"
+				android:label="@string/app_name">
+		</activity>
+		<activity
+				android:name=".ui.GuideActivity"
+				android:screenOrientation="portrait"
+				android:label="@string/app_name">
+		</activity>
+		<activity
+			android:name=".ui.ShareActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/app_share">
+			<!--<intent-filter>-->
+			<!--<action android:name="android.intent.action.MAIN"   />-->
+			<!--<category android:name="android.intent.category.LAUNCHER" />-->
+			<!--</intent-filter>-->
+		</activity>
+		<activity
+			android:name=".ui.HtmlActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/mine_customer">
+			<!--<intent-filter>-->
+				<!--<action android:name="android.intent.action.MAIN" />-->
+				<!--<category android:name="android.intent.category.LAUNCHER" />-->
+			<!--</intent-filter>-->
+		</activity>
+
+		<!--               /\ 以上自己开发的配置 /\           -->
+
+
+		<!--              \/ 以下放第三方工具的配置\/         -->
+
+		<!-- ###################注册SDK使用的Activity###################### -->
+		<!--分享编辑页-->
+		<activity
+			android:name="com.umeng.socialize.view.ShareActivity"
+			android:configChanges="orientation|keyboard"
+			android:launchMode="singleTask"
+			android:noHistory="true"
+			android:theme="@style/Theme.UMDialog"
+			android:windowSoftInputMode="stateVisible|adjustResize" >
+		</activity>
+
+		<!-- 腾讯SSO授权的Activity注册 -->
+		<activity
+			android:name="com.tencent.tauth.AuthActivity"
+			android:launchMode="singleTask"
+			android:noHistory="true" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="tencent100424468" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.tencent.connect.common.AssistActivity"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+		<!-- 微信回调activity -->
+		<activity
+			android:name=".wxapi.WXEntryActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:exported="true"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+		<!-- 友盟AppKey， 需要替换成你自己的 -->
+		<meta-data android:name="UMENG_APPKEY" android:value="5604ba8567e58e47de003895"/>
+		<meta-data android:name="UMENG_CHANNEL" android:value="dev" />
+
+		<!-- 更新的组件 start -->
+		<service
+			android:name="com.umeng.update.net.DownloadingService"
+			android:process=":DownloadingService" >
+		</service>
+
+		<activity
+			android:name="com.umeng.update.UpdateDialogActivity"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+		</activity>
+		<!-- 更新的组件 end -->
+
+
+		<activity
+			android:name=".ui.LoginActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/login" >
+		</activity>
+		<activity
+			android:name=".ui.FindPdwActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/findpassword" >
+		</activity>
+		<activity
+			android:name=".ui.RegisterActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/register" >
+		</activity>
+		<activity android:name=".ui.ProtocalActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/agree_protocol_ui">
+		</activity>
+		<activity
+			android:name=".ui.ModifyPasswordActivity"
+			android:screenOrientation="portrait"
+			android:label="@string/modifypwd" >
+		</activity>
+		<!--百度定位的配置-->
+		<meta-data
+			android:name="com.baidu.lbsapi.API_KEY"
+			android:value="zTVZkFgOA9bXgaZYcNtMkEao" />
+
+		<service
+			android:name="com.baidu.location.f"
+			android:enabled="true"
+			android:process=":remote" >
+		</service>
+
+		<!--个推SDK配置开始-->
+		<!-- 配置的第三方参数属性 -->
+		<meta-data
+			android:name="PUSH_APPID"
+			android:value="0pycnntNnL6lXgUzdljJhA" />
+		<!--替换为第三方应用的APPID-->
+		<meta-data
+			android:name="PUSH_APPKEY"
+			android:value="JiE87oggY46OtGVcx7UyX9" />
+		<!--替换为第三方应用的APPKEY-->
+		<meta-data
+			android:name="PUSH_APPSECRET"
+			android:value="JlIpGrnq3RAtIc1JXefgI" />
+		<!--替换为第三方应用的APPSECRET-->
+		<!-- 配置第三方Receiver -->
+		<!--<receiver-->
+		<!--android:name="com.getui.demo.PushDemoReceiver"-->
+		<!--android:exported="false">-->
+		<!--<intent-filter>-->
+		<!--<action android:name="com.igexin.sdk.action.0pycnntNnL6lXgUzdljJhA" />-->
+		<!--</intent-filter>-->
+		<!--</receiver>-->
+		<!-- 配置SDK核心服务 -->
+		<service
+			android:name="com.igexin.sdk.PushService"
+			android:exported="true"
+			android:label="NotificationCenter"
+			android:process=":pushservice">
+		</service>
+		<service
+			android:name="com.igexin.sdk.PushServiceUser"
+			android:exported="true"
+			android:label="NotificationCenterUser">
+		</service>
+
+		<receiver android:name="com.igexin.sdk.PushReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+				<action android:name="android.intent.action.USER_PRESENT" />
+				<action android:name="com.igexin.sdk.action.refreshls" />
+				<!-- 以下三项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+				<action android:name="android.intent.action.MEDIA_MOUNTED" />
+				<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+				<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+			</intent-filter>
+		</receiver>
+
+		<receiver
+			android:name="com.igexin.sdk.PushManagerReceiver"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="com.igexin.sdk.action.pushmanager" />
+			</intent-filter>
+		</receiver>
+
+		<activity
+			android:name="com.igexin.sdk.PushActivity"
+			android:excludeFromRecents="true"
+			android:exported="false"
+			android:process=":pushservice"
+			android:taskAffinity="com.igexin.sdk.PushActivityTask"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar">
+		</activity>
+
+		<service
+			android:name="com.igexin.download.DownloadService"
+			android:process=":pushservice" />
+
+		<receiver android:name="com.igexin.download.DownloadReceiver">
+			<intent-filter>
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+			</intent-filter>
+		</receiver>
+
+		<provider
+			android:name="com.igexin.download.DownloadProvider"
+			android:exported="true"
+			android:authorities="downloads.com.kuyu.kuxianghui"
+			android:process=":pushservice" />
+
+		<activity
+			android:name="com.igexin.getuiext.activity.GetuiExtActivity"
+			android:configChanges="orientation|keyboard|keyboardHidden"
+			android:excludeFromRecents="true"
+			android:exported="false"
+			android:process=":pushservice"
+			android:taskAffinity="android.task.myServicetask"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+		<receiver
+			android:name="com.igexin.getuiext.service.PayloadReceiver"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+				<action android:name="com.igexin.sdk.action.0pycnntNnL6lXgUzdljJhA" />
+			</intent-filter>
+		</receiver>
+		<service
+			android:name="com.igexin.getuiext.service.GetuiExtService"
+			android:process=":pushservice" />
+		<!-- 个推SDK配置结束 -->
+
+        <!-- 汇银通组件 -->
+        <activity android:name="com.tcl.pay.sdk.SDK_StartJarActivity"></activity>
+        <!-- yin lian  setting -->
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- yin lian  setting -->
+          <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+
+        <!-- alipay sdk end -->
+
+        <!-- wechat sdk start -->
+        <activity
+            android:name="cn.tclpay.pp.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+
+        <receiver
+            android:name="com.tcl.pay.sdk.keybord.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <!-- wechat sdk end -->
+
+	</application>
+</manifest>

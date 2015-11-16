@@ -1,0 +1,39 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.kuyu.kuxianghui.ui.fragment.HomeFragment">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/myMarketProgressBar"
+        android:progressDrawable="@drawable/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="5px"
+        />
+	<include layout="@layout/refresh_webview"/>
+
+    <RelativeLayout
+            android:id="@+id/rl_channel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+
+        <View
+                android:id="@+id/v_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:background="#bf333333"/>
+        <TextView
+                android:id="@+id/tv_tochange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/market_goods"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:textColor="@drawable/market_text_channel"
+                android:background="@drawable/market_channel_selector"/>
+    </RelativeLayout>
+
+</FrameLayout>

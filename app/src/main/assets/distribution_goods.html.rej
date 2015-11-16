@@ -1,0 +1,10 @@
+diff a/kuxianghui_android/app/src/main/assets/distribution_goods.html b/kuxianghui_android/app/src/main/assets/distribution_goods.html	(rejected hunks)
+@@ -243,7 +243,7 @@
+ 							data += "<span class='y_salesize'>销量："
+ 									+ field.number
+ 									+ "</span>";
+-							data += "<a href=\"javascript:share('"+field.product.productImage.mainImageUrl+"','"+field.product.productInfo.productName+"','￥"+field.product.shopPrice+"','http://10.120.99.171/tclwap/front/product/toProduct/"+field.product.productMain.uuid+"?planUuid="+field.planUuid+"&distributorUuid="+field.disUuid+"')\" class='y_share'>分享</a>";
++							data += "<a href='#' onclick=\"javascript:share('"+field.product.productImage.mainImageUrl+"','"+field.product.productInfo.productName+"','"+field.product.productInfo.productName+"','￥"+field.product.shopPrice+"','http://10.120.99.171/tclwap/front/product/toProduct/"+field.product.productMain.uuid+"?planUuid="+field.planUuid+"&distributorUuid="+field.disUuid+"')\" class='y_share'>分享</a>";
+ 							data += "</div>";
+ 							data += "</section>";
+ 

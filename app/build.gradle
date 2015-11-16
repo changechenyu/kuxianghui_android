@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.0"
+
+    defaultConfig {
+        applicationId "com.kuyu.kuxianghui"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        debug {
+            //No debug config
+        }
+        release {
+            storeFile file("kuxianghui.jks")
+            storePassword "kuyu@2015"
+            keyAlias "kuxianghui"
+            keyPassword "kuyu@2015"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            buildConfigField "Boolean", "DEBUG_MODE", "false"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug{
+            minifyEnabled false
+            buildConfigField "Boolean", "DEBUG_MODE", "true"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    //新建任务  用于导入.so库文件，如果不创建这个任务也可以直接在app根目录下新建“jniLibs”资源文件夹，把.so文件复制进去
+    task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+        destinationDir file("$projectDir/libs")
+        baseName "Native_Libs2"
+        extension "jar"
+        from fileTree(dir: "libs", include: "**/*.so")
+        into "lib"
+    }
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn(nativeLibsToJar)
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'//volley
+    compile 'com.google.code.gson:gson:1.7.2'//Gson
+    compile files('libs/baidumapapi_v3_2_0.jar')
+}

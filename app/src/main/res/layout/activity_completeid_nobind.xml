@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:background="@color/white"
+            android:gravity="center_horizontal" >
+            <!--name -->
+            <LinearLayout
+                android:id="@+id/email_address_layout"
+                style="@style/input_layout_style">
+                <EditText
+                    android:id="@+id/name_for_complete_no"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/name"/>
+                <ImageView
+                    android:id="@+id/iv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <!--telephone -->
+            <LinearLayout
+                android:id="@+id/telephone_layout"
+                style="@style/input_layout_style"
+                android:layout_below="@+id/email_address_layout"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top">
+
+                <EditText
+                    android:id="@+id/telephone_for_complete_no"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/telephone"/>
+                <ImageView
+                    android:id="@+id/iv_telephone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/verification_layout_no"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/telephone_layout"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/verification_code_layout"
+                    android:layout_width="150dp"
+                    style="@style/input_layout_verification_code_style" >
+                    <EditText
+                        android:id="@+id/et_input_verification_code_no"
+                        style="@style/input_layout_edittext_style"
+                        android:inputType="number"
+                        android:layout_toLeftOf="@+id/iv_verification_code"
+                        android:hint="@string/vercode" />
+                    <ImageView
+                        android:id="@+id/iv_verification_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/btn_get_verification_code"/>
+                </LinearLayout>
+                    <Button
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/verification_code_image"
+                        android:layout_width="fill_parent"
+                        android:layout_height="55dp"
+                        android:inputType="number"
+
+                        android:text="@string/getverification_code"
+                        />
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/id_agree_layout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/verification_layout_no"
+                android:gravity="center_vertical"
+                android:layout_marginTop="15dp"
+                >
+                <CheckBox
+                    android:id="@+id/cb_agree_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/register_checkbox_bg_selector"
+                    android:button="@null"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="0dp"
+                    android:text="@string/agree"/>
+                <TextView
+                    android:id="@+id/tv_register_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@drawable/btn_get_vercode_text_color_selector"
+                    android:layout_toRightOf="@+id/cb_agree_no"
+                    android:text="@string/register_agreement_u" />
+            </RelativeLayout>
+            <!-- login_button -->
+            <Button
+                android:id="@+id/btn_login_no"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/id_agree_layout"
+                android:layout_marginTop="@dimen/register_register_btn_margin_top"
+                android:text="@string/comfirm"
+                android:layout_marginBottom="10dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

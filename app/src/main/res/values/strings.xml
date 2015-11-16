@@ -1,0 +1,171 @@
+<resources>
+	<string name="app_name">酷享汇</string>
+
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+	<string name="mine">我的</string>
+	<string name="cart">购物车</string>
+	<string name="market">酷商市场</string>
+	<string name="home">首页</string>
+
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="press_again_to_exit">再按一次退出应用</string>
+	<string name="exit_appliaction">退出应用</string>
+
+	<string name="ok">确定</string>
+	<string name="finish">完成</string>
+	<string name="retry">重试</string>
+	<string name="close">关闭</string>
+	<string name="tis">提示</string>
+
+	<string name="confirm">确定</string>
+	<string name="cancel">取消</string>
+	<string name="dialog_cart_title">温馨提示</string>
+
+	<!-- 下拉刷新 -->
+	<!-- 和友盟sdk重复 -->
+	<!--string name="pull_to_refresh_pull_label">下拉刷新\u2026</string>
+	<string name="pull_to_refresh_release_label">放开以刷新\u2026</string>
+	<string name="pull_to_refresh_refreshing_label">正在载入\u2026</string-->
+
+	<!-- Just use standard Pull Down String when pulling up. These can be set for languages which require it -->
+	<string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+	<string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+	<string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+	<string name="kuyu_version_info">TCL酷友网络科技有限公司  ©2015-2016.TCL GROUP</string>
+	<string name="no_netword_connect">网络无连接，请连接网络</string>
+	<string name="go_to_set_network">去设置</string>
+
+	<!-- LoginActivity -->
+	<string name="email">用户名/邮箱/手机号</string>
+	<string name="passwrod">输入密码</string>
+	<string name="vercode">请输入验证码</string>loginbutton
+	<string name="loginbutton">登录</string>
+	<string name="regitster_forfree">免费注册</string>
+	<string name="forger_passwrod">忘记密码？</string>
+	<string name="login">登陆</string>
+	<!-- Compelele_Id_Activity -->
+	<string name="name">用户名</string>
+	<string name="really_name">真实名字</string>
+	<string name="telephone">手机号</string>
+	<string name="open_bank">开户银行</string>
+	<string  name="bank_idcard">银行卡号</string>
+	<string name="open_name">开户人姓名</string>open_province
+	<string name="open_province">开户省市：</string>
+	<string name="agree">同意</string>
+	<string name="register_agreement_u">《酷客用户注册协议》</string>
+	<string name="comfirm">确定</string>
+	<string name="getverification_code">获取验证码</string>
+	<!--register-->
+	<string name="comfirm_password">确认密码</string>
+	<string name="user_mobilephone">用户手机号</string>
+	<string name="num_0">0</string>
+	<string name="salary_total">累计收益（元）</string>
+	<string name="customer_sum">客户数</string>
+	<string name="mine_customer">我的客户</string>
+	<string name="mine_get_money_history">我的提现</string>
+	<string name="mine_order">我的订单</string>
+	<string name="mine_income">我的收益</string>
+	<string name="mine_complaint">我的投诉</string>
+	<string name="mine_change_pass">修改密码</string>
+	<string name="mine_help">帮助中心</string>
+	<string name="mine_feedback">反馈建议</string>
+	<string name="logout">退出登录</string>
+
+	<string name="confirn_password_register">确认密码</string>
+	<string name="old_password">请输入原密码</string>
+	<string name="register">注册</string>
+	<!--findpassword-->
+	<string name="telephone_email">请输入手机号或邮箱</string>
+	<string name="telephone_code">请输入短信验证码</string>
+	<string name="new_password">请输入新密码</string>
+	<string name="confirm_password_findpwd">确认新密码</string>
+	<string name="next">下一步</string>
+	<string name="commit">提交</string>
+	<string name="return_login">返回登录页面</string>
+	<string name="getpwdsuccess">找 回 密 码 成 功</string>
+	<string name="confirm_email_hassend">验 证 邮 箱 已 发 送</string>
+	<string name="goto_email_confrim">请 前 往 邮 箱 验 证！</string>
+	<string name="enter_app">进入应用</string>
+	<string name="findpassword">找回密码</string>
+	<string name="telephone_or_email_can_not_null">手机号码或者邮箱不能为空</string>
+	<string name="email_is_errror">邮箱输入错误</string>
+	<string name="tel_is_errror">手机号码输入错误</string>
+	<string name="tel_code_errror">短信验证码输入错误</string>
+	<string name="tel_code_is_not_null">短信验证不能为空</string>
+	<string name="modifypwd">修改密码</string>
+	<string name="please_input_code">请输入验证码</string>
+	<!--错误文字提醒-->
+	<string name="accoutn_error">用户名/邮箱/手机号不能为空</string>
+	<string name="password_error">密码不能为空</string>
+	<string name="confirm_password_error">确认密码不能为空</string>
+	<string name="password_not_same">2次输入的密码不一样</string>
+	<string name="phone_can_not_null">手机号码不能为空</string>
+	<string name="phone_error">手机号码错误</string>
+	<string name="code_can_not_null">验证码不能为空</string>
+	<string name="code_error">验证码输入错误</string>
+	<string name="name_can_not_null">用户名不能为空</string>
+	<string name="agree_protocol">请同意《酷客用户注册协议》</string>
+	<string name="agree_protocol_ui">《酷客用户注册协议》</string>
+
+	<string name="pwd_length_error">密码长度要大于6小于20</string>
+	<string name="new_password_error">密码不能为空</string>
+	<string name="old_password_error">原密码不能为空</string>
+	<string name="new_password_error_mopdify">新密码不能为空</string>
+	<string name="new_confirm_password_error">确认密码不能为空</string>
+	<string name="actionbar_plan">分销计划</string>
+	<string name="actionbar_cart">购物车</string>
+	<string name="actionbar_mine">酷客中心</string>
+	<string name="locate_price">定位地址</string>
+	<string name="market_plan">分销计划</string>
+	<string name="market_goods">分销商品</string>
+
+
+	<string name="send_success">验证码已成功发送到手机</string>
+	<string name="register_success">注册成功</string>
+	<string name="get_picture_error">获取图片验证码失败</string>
+	<string name="login_code_error">验证码错误</string>
+	<string name="username_is_null">用户名不存在</string>
+	<string name="find_pwd_error">找回密码虽败</string>
+	<string name="update_pws_success">修改密码成功</string>
+	<string name="update_pws_error">修改密码失败</string>
+	<string name="find_pwd_success">找会密码成功</string>
+	<string name="user_id_not_register">用户未注册</string>
+	<string name="send_telephone_success">已成功发送到手机</string>
+	<string name="send_email_success">已成功发送到邮箱</string>
+	<string name="send_error">发送验证码失败</string>
+	<string name="lack_username">账号被锁定</string>
+	<string name="username_or_password_is_error">用户名或密码不正确</string>
+
+	<string name="goods_detail">商品详情</string>
+	<!--<string name="url_para_append">\&</string>-->
+	<string name="select_place">选择区域</string>
+
+	<string name="market_category_select">商品类目选择</string>
+	<string name="market_distributiongood_list">分销商品列表</string>
+	<string name="market_distribution_hotplan">热门计划</string>
+	<string name="market_define_goods">热门商品</string>
+	<string name="home_notice_detail">公告详情</string>
+	<string name="market_distribution_goods">分销商品</string>
+	<string name="market_distribution_plan">分销计划</string>
+	<string name="market_select_rigion">选择地区</string>
+	<string name="market_hotarea_distributiongood">热门地区-分销商品</string>
+	<string name="market_select_province">选择省</string>
+	<string name="market_select_city">选择市</string>
+	<string name="market_distribution_detail">分销计划详情</string>
+	<string name="mine_to_complaint">我要投诉</string>
+	<string name="mine_complaint_detail">投诉详情</string>
+	<string name="mine_cancelcomplaint_success">撤销投诉成功</string>
+	<string name="mine_complaint_success">投诉成功</string>
+	<string name="mine_feedback_success">反馈建议成功</string>
+	<string name="mine_helpcenter_detail">帮助中心详情</string>
+	<string name="mine_draw_money">我的提现</string>
+	<string name="mine_drawmoney_apply">提现申请</string>
+	<string name="mine_applymoney_success">提现成功</string>
+	<string name="mine_order_detail">订单详情</string>
+	<string name="mine_profit_detail">收益详情</string>
+	<string name="home_new_products">新品惠</string>
+
+
+	<string name="general_city">惠州市</string>
+</resources>

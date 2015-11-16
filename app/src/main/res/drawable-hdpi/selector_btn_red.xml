@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 红色按钮-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:alpha="0.7" >
+        <shape>
+            <solid android:color="#ff0000"/>
+            <corners android:radius="5dp"/>
+        </shape>                 
+    </item>
+    
+<!--       <item android:state_focused="false" > -->
+<!--         <shape> -->
+<!--             <stroke android:color="#669900" android:width="1dp"/> -->
+<!--             <solid android:color="#7abd1e"/> -->
+<!--             <corners android:radius="5dp"/> -->
+<!--         </shape> -->
+<!--     </item> -->
+      
+    <item android:state_focused="true" >
+        <shape>
+            <stroke android:color="#a0a0a0" android:width="1dp"/>
+            <solid android:color="#a0a0a0"/>
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+
+    <item android:state_pressed="true" >
+        <shape>
+            <solid android:color="#9F1938"/>
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="#ff4040"/>
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+</selector>

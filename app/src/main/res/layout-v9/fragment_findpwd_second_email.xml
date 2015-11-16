@@ -1,0 +1,58 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/findpwd_third_email_sv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/input_bg"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:background="@color/input_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:gravity="center_horizontal" >
+            <!-- textsucces -->
+            <LinearLayout
+                android:id="@+id/email_hassend_layout"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_height="140dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/showsuceess_for_findpwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:text="@string/confirm_email_hassend"/>
+                <TextView
+                    android:id="@+id/showsuceess_for_findpwd1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:text="@string/goto_email_confrim"/>
+            </LinearLayout>
+
+            <!-- login_button -->
+            <Button
+                android:id="@+id/btn_return_third_login"
+                style="@style/redbutton"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/email_hassend_layout"
+                android:layout_marginTop="@dimen/register_register_btn_margin_top"
+                android:text="@string/return_login"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

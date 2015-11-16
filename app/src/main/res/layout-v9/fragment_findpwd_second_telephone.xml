@@ -1,0 +1,77 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/findpwdsv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/input_bg"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:background="@color/input_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:gravity="center_horizontal" >
+            <!-- Email -->
+             <TextView
+                    android:id="@+id/telephone_show_findpwd"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="185*****516"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+              />
+            <!-- verification -->
+            <LinearLayout
+                android:id="@+id/findpwd_telephone_verification_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/telephone_show_findpwd"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top"
+                >
+                <LinearLayout
+                    android:id="@+id/findpwd_input_verification_code_layout"
+                    android:layout_width="160dp"
+                    android:layout_weight="1"
+                    style="@style/input_layout_verification_code_style" >
+                    <EditText
+                        android:id="@+id/input_code_findpwd_second_telephone"
+                        style="@style/input_layout_edittext_style"
+                        android:inputType="number"
+                        android:layout_toLeftOf="@+id/iv_verification_code"
+                        android:hint="@string/telephone_code" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/findpwd_seconde_repeat_code_layout"
+                    android:layout_width="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    style="@style/text_layout_verification_code_style"
+                    >
+                    <Button
+                        android:id="@+id/repeat_code_button"
+                        style="@style/text_layout_notedit_style"
+                        android:text="60s后重新获取"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- login_button -->
+            <Button
+                android:id="@+id/btn_findpwd_second_telephone_next"
+                style="@style/redbutton"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/findpwd_telephone_verification_layout"
+                android:layout_marginTop="@dimen/register_register_btn_margin_top"
+                android:text="@string/next"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

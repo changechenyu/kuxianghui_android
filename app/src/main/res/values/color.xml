@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="input_edittext_bg">#00000000</color>
+
+	<color name="main_bottom_tab_text_color">#CCCCCC</color>
+
+
+
+	<color name="text_black">#333333</color>
+	<color name="text_gray">#b3b3b3</color>
+
+
+	<color name="normal_button_normal_bg">#fa6e00</color>
+	<color name="normal_button_press_bg">#A0522D</color>
+</resources>

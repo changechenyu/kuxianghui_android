@@ -1,0 +1,240 @@
+<resources>
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<!-- Customize your theme here. -->
+	</style>
+
+	<style name="main_tab_bottom_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:button">@null</item>
+		<item name="android:background">@null</item>
+		<item name="android:textColor">@drawable/tab_text_selector</item>
+		<item name="android:textSize">11sp</item>
+		<item name="android:gravity">center</item>
+	</style>
+
+	<style name="CustomDialog" parent="@android:style/Theme.Dialog">
+		<item name="android:windowFrame">@null</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+		<item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+	</style>
+
+	<style name="CustomProgressDialog" parent="@style/CustomDialog">
+		<item name="android:windowBackground">@color/white</item>
+		<item name="android:windowNoTitle">true</item>
+	</style>
+
+	<style name="dialog_tran" parent="android:style/Theme.Dialog">
+		<item name="android:windowFrame">@null</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:backgroundDimEnabled">false</item>
+		<item name="android:backgroundDimAmount">0.4</item>
+	</style>
+
+	<style name="dialog_untran" parent="dialog_tran">
+		<item name="android:backgroundDimEnabled">true</item>
+	</style>
+
+	<style name="DialogWindowTitle">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textColor">@color/text_color</item>
+	</style>
+
+
+	<style name="dialog_btn">
+		<item name="android:layout_width">0dp</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:minHeight">36dp</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:layout_marginBottom">10dp</item>
+		<item name="android:background">@drawable/actionbar_return_bg_selector</item>
+		<item name="android:textColor">#ffffff</item>
+		<item name="android:gravity">center</item>
+	</style>
+
+	<dimen name="main_tab_margin_buttom">6dp</dimen>
+
+	<style name="input_layout_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/input_layout_height</item>
+		<item name="android:background">@drawable/input_layout_bg_selector</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+
+	<style name="text_layout_telephone">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/input_layout_height</item>
+		<item name="android:background">@drawable/text_layout_bg_telephone</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+
+	<style name="input_code_layout_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/input_layout_height</item>
+		<item name="android:background">@drawable/input_layout_bg_selector</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+
+	<style name="input_layout_edittext_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:background">@color/input_edittext_bg</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:textColorHint">#dcdcdc</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:textSize">17dp</item>
+	</style>
+
+	<style name="webview_layout_edittext_style">
+		<item name="android:background">@color/white</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:textSize">17dp</item>
+	</style>
+
+	<style name="input_layout_verification_code_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/input_layout_height</item>
+		<item name="android:background">@drawable/input_layout_ver_code_bg_selector</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:paddingLeft">5dp</item>
+	</style>
+
+	<style name="text_mine_title">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textSize">14sp</item>
+	</style>
+
+	<style name="text_mine_sub_title">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textSize">12sp</item>
+	</style>
+
+	<style name="text_mine_channel">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@color/text_33</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:layout_marginLeft">8dp</item>
+	</style>
+
+	<style name="mine_arrow_right">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginRight">16dp</item>
+		<item name="android:layout_alignParentRight">true</item>
+		<item name="android:src">@drawable/right</item>
+	</style>
+
+	<style name="mine_icon_left">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginLeft">8dp</item>
+		<item name="android:layout_alignParentLeft">true</item>
+	</style>
+
+	<style name="mine_channel">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">44dp</item>
+		<item name="android:paddingLeft">15dp</item>
+		<item name="android:layout_alignParentLeft">true</item>
+		<item name="android:clickable">true</item>
+		<item name="android:background">@drawable/mine_channel_selector</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+
+	<style name="mine_line">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1dp</item>
+		<item name="android:layout_marginLeft">15dp</item>
+		<item name="android:background">@color/color_mine_line</item>
+	</style>
+
+	<style name="text_layout_notedit_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:background">@color/gray</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:textColor">@drawable/selector_btn_white_text</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:textSize">17dp</item>
+	</style>
+
+	<style name="text_layout_verification_code_style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/input_layout_height</item>
+		<item name="android:background">@drawable/text_layout_bg_codenotedit</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:paddingLeft">5dp</item>
+	</style>
+	<!--红色按钮 里面的字是白色-->
+	<style name="redbutton" parent="@android:style/Widget.Button">
+		<item name="android:background">@drawable/selector_btn_red</item>
+		<item name="android:focusable">true</item>
+		<item name="android:clickable">true</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:paddingLeft">16dp</item>
+		<item name="android:paddingRight">16dp</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+		<item name="android:textColor">@drawable/selector_btn_white_text</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+	</style>
+
+	<!--灰色按钮-->
+	<style name="graybutton" parent="@android:style/Widget.Button">
+		<item name="android:background">@drawable/selector_btn_gray</item>
+		<item name="android:focusable">true</item>
+		<item name="android:clickable">true</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:paddingLeft">16dp</item>
+		<item name="android:paddingRight">16dp</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+		<item name="android:textColor">@drawable/selector_text_white_66</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+	</style>
+
+	<!--获取验证码按钮 里面的字是白色-->
+	<style name="get_code_button" parent="@android:style/Widget.Button">
+		<item name="android:background">@drawable/text_layout_bg_codenotedit</item>
+		<item name="android:focusable">true</item>
+		<item name="android:clickable">true</item>
+		<item name="android:textSize">15sp</item>
+		<item name="android:paddingLeft">16dp</item>
+		<item name="android:paddingRight">16dp</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+		<item name="android:textColor">@drawable/selector_btn_white_text</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+	</style>
+
+	<style name="actionbar_title_text_style">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@color/color_33</item>
+		<item name="android:textSize">20dp</item>
+	</style>
+
+	<style name="actionbar_title_text_style_clickable">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@drawable/selector_text_33_99</item>
+		<item name="android:textSize">20dp</item>
+	</style>
+</resources>

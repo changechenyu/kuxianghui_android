@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-选择地区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--搜索框-->
+	<section class="m_serch">
+		<div class="m_serch_box">
+			<span class="fl m_ioc"><img src="img/m_ioc.png"></span>
+			<input type="text" class="serch_control fl" placeholder="请输入地区名称" value="">
+			<a href="##" class="fr m_btn">搜索</a>
+		</div>
+	</section><!--搜索框 end-->
+	<!--推荐地区-->
+	<section class="y_areabox">
+		<header><h2>定位地区</h2></header>
+		<div class="y_arearecond y_areaone">
+			<a href="#" >保山</a>
+		</div>
+		<header><h2>热门地区</h2></header>
+		<div class="y_arearecond" id="hotAreas">
+			<!-- <a href="#">北京</a><a href="#">上海</a><a href="#">深圳</a><a href="#">武汉</a><a href="#">惠州</a><a href="#">东莞</a> -->
+		</div>
+	</section><!--推荐地区 end-->
+	<!--地区列表-->
+	<section class="y_arealist" id="y_arealist">
+		<header>省份</header>
+		<ul id="province">
+			<!-- <li><a href="#">北京</a></li>
+			<li><a href="#">天津</a></li>
+			<li><a href="#">上海</a></li>
+			<li><a href="#">广东</a></li>
+			<li><a href="#">重庆</a></li>
+			<li><a href="#">吉林</a></li>
+			<li><a href="#">湖北</a></li>
+			<li><a href="#">湖南</a></li>
+			<li><a href="#">安徽</a></li>	 -->
+		</ul>
+	</section><!--地区列表 end-->
+	<input type="hidden" id="pageNo" value="2"/>
+	<script>
+		
+		$(function(){
+			var fromPage = getRequestParam("fromPage");
+			var flag=true;
+			var pageShow = "10";
+			loadProvince("1",pageShow);
+			loadHotAreas();
+			var height =$("#y_arealist").height();
+			
+			$(document).scroll(function (){
+				
+				if(flag && $(document).scrollTop()>=$(document).height()-$(window).height()){
+					var pageNo = $("#pageNo").val();
+					setTimeout(function(){
+						var pageNo = $("#pageNo").val();
+						loadProvince(pageNo,pageShow);
+						$("#pageNo").val(Number($("#pageNo").val())+1);
+							
+					}, 1000);
+				}
+			});
+			
+			function loadProvince(pageNo,pageShow){
+				var url=getProjectPath()+"/app/locationarea/toProvinceList";
+				$.ajax({
+					type:"get",
+					async:false,
+					url:url,
+					data:{ "pageNo": pageNo, "pageShow": pageShow},
+					jsonp:"jsonpcallback",
+					dataType : "jsonp",//数据类型为jsonp
+					success : function(data){
+						var result=eval(data);
+						if(result !=null && "" !=result){
+							$.each(result, function(i, province){
+								//var html="<li><a href='select_area_city.html?provinceUuid="+province.uuid+"&&fromPage="+fromPage+"'>"+province.provinceName+"</a></li>";
+								var html="<li><a href='javascript:goSelectAreaProvince(\""+province.uuid+"\",\""+fromPage+"\")'>"+province.provinceName+"</a></li>";
+							 		$("#province").append(html);
+								});
+						}else{
+							flag=false;
+							return;
+						}
+					}
+				});
+				
+			}
+			
+			function loadHotAreas(){
+				var url=getProjectPath()+"/app/decorate/getComp";
+				$.ajax({
+					type:"get",
+					async:false,
+					url:url,
+					data:{compId:"hotareas",paramName:"param_areauuids",pageName:"common",ranNum:Math.random()},
+					jsonp:"jsonpcallback",
+					dataType : "jsonp",//数据类型为jsonp
+					success : function(data){
+						$.each(eval(data), function(i, hotArea) {
+							var html="";
+							if(fromPage=="distribution_goods"){
+								
+								html=html+"<a href='javascript:goHotAreaDistributionGoods(\""+hotArea.uuid+"\")'>"+hotArea.cityName+"</a>";
+							}else if(fromPage=="distributionplan"){
+								//html=html+"<a href='"+fromPage+".html?areaCode="+hotArea.uuid+"'>"+hotArea.cityName+"</a>";
+							}
+							
+							$("#hotAreas").append(html);
+				        });
+					}
+				});
+				/* var pathName = document.location.pathname; 
+				var index = pathName.substr(1).indexOf("/"); 
+				var result = pathName.substr(0,index+1); 
+				var url=result+"/app/decorate/getComp";
+				$.get(url,{compId:"hotareas",paramName:"param_areauuids",pageName:"common",ranNum:Math.random()},function(data){
+					$.each(eval(data), function(i, hotArea) {
+						var html="";
+						if(fromPage=="distribution_goods"){
+							
+							html=html+"<a href='javascript:goDistributionGoods(\""+hotArea.uuid+"\")'>"+hotArea.cityName+"</a>";
+						}else if(fromPage=="distributionplan"){
+							//html=html+"<a href='"+fromPage+".html?areaCode="+hotArea.uuid+"'>"+hotArea.cityName+"</a>";
+						}
+						
+						$("#hotAreas").append(html);
+			        });
+					
+				}); */
+			}
+			
+		})
+		
+		//跳转到省-市列表
+		function goSelectAreaProvince(uuid,pageName){
+			//调用原生接口
+			App.run('goSelectAreaProvince', {uuid:uuid,pageName:pageName});
+		}
+		
+		//跳转到分销商品列表
+		function goHotAreaDistributionGoods(areaCode){
+			//调用原生接口
+			App.run('goHotAreaDistributionGoods', {areaCode:areaCode});
+		}
+		
+	</script>
+</body>
+</html>

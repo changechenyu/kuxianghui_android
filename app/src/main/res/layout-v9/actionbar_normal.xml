@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_title"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/actionbar_height"
+    android:background="@drawable/actionbar_bg"
+    android:gravity="center_vertical" >
+
+    <TextView
+        android:id="@+id/action_bar_text"
+        style="@style/actionbar_title_text_style"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

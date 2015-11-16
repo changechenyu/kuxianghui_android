@@ -1,0 +1,434 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-分销商品</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css"
+	media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+<script src="js/jquery.cookie.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<!--搜索框-->
+	<section class="m_serch">
+		<div class="m_serch_box">
+			<span class="fl m_ioc"><img src="img/m_ioc.png"></span> <input
+				type="text" class="serch_control fl" placeholder="请输入商品名称" value=""
+				id="distribution_goods_name"> <a href="##" class="fr m_btn"
+				id="distribution_goods_select">搜索</a>
+		</div>
+		 <input type="hidden" id="areaHiddenUuid" value="145" />
+	</section>
+	<!--搜索框 end-->
+
+	<section class="m_sort m_goods">
+		<!--分销计划排序-->
+		<ol id="goods_top_btn">
+			<li class="m_varieties active"><a href="##">按品种<s></s></a></li>
+			<li><a href="javascript:void(0);"
+				onclick="getPage(this,'number')">按销量</a></li>
+			<li><a href="javascript:void(0);"
+				onclick="getPage(this,'commissionRate')">按佣金比例</a></li>
+			<li><a href="javascript:void(0);"
+				onclick="getPage(this,'commission')">按预计收入</a></li>
+		</ol>
+		<!--分销计划排序 end-->
+		<div class="m_varieties_box">
+			<div class="m_itme">
+				<!-- 
+				<a href="##" class="m_itme_a active">电视</a>
+				<a href="##">手机</a>
+				<a href="##">空调</a>
+				<a href="##">冰箱</a>
+				<a href="##" class="m_itme_a">洗衣机</a>
+				<a href="##">小家电</a>
+				<a href="##">数码</a>
+				<a href="##">附件</a>
+				 -->
+			</div>
+		</div>
+	</section>
+
+	<!--列表主体-->
+	<section class="y_productlist" id="y_productlist">
+		<ul id="good_data_list">
+
+
+		</ul>
+	</section>
+	<!--列表主体 end-->
+	<!--列表无内容结构-->
+	<section class="list_none" style="display: none"
+		id="distribution_good_nothing">
+		<div class="list_none_pic">
+			<img src="img/none.png">
+		</div>
+		<div class="list_none_tit y_mb10">暂无分销商品~~</div>
+	</section>
+
+	<!--加载中提示-->
+	<section class="y_loading" style="display: none">
+		<img src="img/loading.gif"> 加载中...
+	</section>
+	<!--加载中提示 end-->
+	<section class="bg_mask" id="list_mask" style="display: none"></section>
+
+	<!--导向-->
+	<div class="y_guidebox">
+		<section class="bg_mask bg_mask2"></section>
+		<section class="m_guide_box in">
+			<div class="img">
+				<img src="img/m_guide.png">
+			</div>
+			<p>长按列表可查看返利信息呦～</p>
+		</section>
+	</div>
+	<!--导向end-->
+	<input type="hidden" id="pageNo" value="2" />
+	<input type="hidden" id="goodsViewType" />
+
+
+	<script>
+		var flag = true;
+		var storage = window.localStorage;
+		$(function() {
+			var complainUuid = getRequestParam("uuid");
+			var areaUuid = getRequestParam("areaCode");
+			var cookCode=$.cookie("areaCode");
+			//areaUuid="1160";
+			if (areaUuid != null && "" != areaUuid) {
+				$("#areaHiddenUuid").val(areaUuid);
+				$.cookie("areaCode",areaUuid);
+			}else if(cookCode != null && "" != cookCode){
+				areaUuid=cookCode;
+				$("#areaHiddenUuid").val(areaUuid);
+			}else{
+				areaUuid=$("#areaHiddenUuid").val();
+			}
+			areaUuid = $("#areaHiddenUuid").val();
+			$("#distribution_goods_name").val("");
+			$("#pageNo").val("2");
+			$("#goodsViewType").val("");
+			var pageShow = "6";
+			loadData(1, pageShow, "", "", complainUuid, areaUuid);
+			loadCatalogs();
+			loadAreaData();
+			var height = $("#y_productlist").height();
+
+			$(document).scroll(
+					function() {
+						if (flag
+								&& $(document).scrollTop() >= $(document)
+										.height()
+										- $(window).height()) {
+							$(".y_loading").show();
+							var pageNo = $("#pageNo").val();
+							flag = false;
+							setTimeout(function() {
+								var pageNo = $("#pageNo").val();
+								var orderType = $("#goodsViewType").val();
+								var areaUuid = $("#areaHiddenUuid").val();
+								loadData(pageNo, pageShow, orderType, "", "",
+										areaUuid);
+								$(".y_loading").hide();
+								$("#pageNo")
+										.val(Number($("#pageNo").val()) + 1);
+
+							}, 1000);
+						}
+					});
+
+			//分销商品下拉
+			$(".y_header .m_h1 .tit").click(
+					function() {
+						var $popupbox = $("<div class='bg_mask1'></div>");
+						var y_header_height = $(".y_header").height();
+						var body_height = $("html").height();
+						if ($(".y_header .m_h1 ul").hasClass("in")) {
+							$(".y_header .m_h1 ul").removeClass("in");
+							$(".bg_mask1").removeClass("fade");
+							$(".bg_mask1").remove();
+						} else {
+							$(".y_header .m_h1 ul").addClass("in");
+							$("body").append($popupbox);
+							$(".bg_mask1").css("height",
+									body_height - y_header_height);
+							$(".bg_mask1").css("margin-top", y_header_height);
+						}
+					});
+
+			//按品种
+			$(".m_goods li.m_varieties a").click(function() {
+				$(".m_varieties_box").slideToggle();
+				return false;
+			});
+
+			
+
+			//点击页面去除导向
+			$("body").one("click", function() {
+				$(".bg_mask2").remove();
+				$(".m_guide_box").remove();
+				$(".y_guidelist").removeClass("y_guidelist");
+			});
+		})
+
+		//加载列表数据
+		function loadData(pageNo, pageShow, orderType, productName,
+				catalogUuid, areaUuid) {
+			var url=getProjectPath()+"/app/distributionproduct/toList";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{
+					"pageNo" : pageNo,
+					"pageShow" : pageShow,
+					"orderType" : orderType,
+					"productname" : productName,
+					"catalogUuid" : catalogUuid,
+					"areaUuid" : areaUuid
+				},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(json){
+					var data = "";
+					var result=eval(json);
+					if(result !=null && "" !=result){
+						$.each(result,function(i, field) {
+							data += "<li><a href=\"javascript:goProductDetail('"+field.product.productMain.uuid+"','"+field.planUuid+"','"+field.disUuid+"')\">";
+							data += "<section class='y_productitem' data-href='#'>";
+							if (field.product != null
+									&& "" != field.product) {
+								if (field.product != null
+										&& "" != field.product) {
+									if (field.product.productImage != null
+											&& "" != field.product.productImage) {
+										data += "<div class='pic'><img src='"+field.product.productImage.mainImageUrl+"'></div>";
+									} else {
+										data += "<div class='pic'><img src='img/adimg/product220.jpg'></div>";
+									}
+
+								} else {
+									data += "<div class='pic'><img src='img/adimg/product220.jpg'></div>";
+								}
+							} else {
+								data += "<div class='pic'><img src='img/adimg/product220.jpg'></div>";
+							}
+							//data+="<div class='pic'><img src='"+field.product.productImagePhone.centerImageUrl+"'></div>";
+							data += "<div class='y_ms'>";
+							if (field.product.productInfo != null
+									&& "" != field.product.productInfo) {
+								data += "<h2>"
+										+ field.product.productInfo.productName
+										+ "</h2>";
+							} else {
+								data += "<h2></h2>";
+							}
+
+							data += "<p class='y_price'>¥ <span>"
+									+ field.product.shopPrice
+									+ "</span></p>";
+							data += "<span class='y_salesize'>销量："
+									+ field.number
+									+ "</span>";
+							data += "<a href=\"javascript:share('"+field.product.productImage.mainImageUrl+"','"+field.product.productInfo.productName+"','"+field.product.productInfo.adviceNote+"','￥"+field.product.shopPrice+"','http://10.120.99.171/tclwap/front/product/toProduct/"+field.product.productMain.uuid+"?planUuid="+field.planUuid+"&distributorUuid="+field.disUuid+"')\" class='y_share'>分享</a>";
+							data += "</div>";
+							data += "</section>";
+
+							data += "<div class='y_morems'>";
+							data += "<p>预计收入：<span class='f_color1'>¥"
+									+ field.commission
+									+ "</span></p>";
+							data += "<p>佣金比例：<span class='f_color1'>"
+									+ field.commissionRate
+									+ "%</span></p>";
+							//data+="<p>服务质量：<span class='y_star'><b style='width:100%'></b></span></p>";
+							if (field.product.productMain != null
+									&& "" != field.product.productMain) {
+								data += "<p>商家："
+										+ field.storeName
+										+ "</p>";
+							} else {
+								data += "<p>商家：</p>";
+							}
+
+							data += "</div>";
+							data += "</a></li>";
+				        });
+						$("#y_productlist ul").append(data);
+						//列表长按事件
+						var timeout;
+						var obj = document.getElementById("y_productlist")
+								.getElementsByTagName("section");
+						for ( var i = 0; i < obj.length; i++) {
+							obj[i].addEventListener('touchstart', function(event) {
+								var _self = $(this);
+								timeout = setTimeout(function() {
+									_self.next().show();
+									var y_top2 = _self.offset().top - $(window).scrollTop()
+											+ 30;
+									_self.next().css("top", y_top2);
+									$("#list_mask").show();
+								}, 500);
+							}, false);
+							obj[i].addEventListener('touchend', function(event) {
+								clearTimeout(timeout);
+								$(this).next().hide();
+								$("#list_mask").hide();
+							}, false);
+						};
+						flag = true;
+					}else{
+						$(".y_loading").hide();
+						if (pageNo == 1) {
+							$("#distribution_good_nothing").show();
+						}
+						flag = false;
+					}
+					//首次进入页面向导
+					if (storage.getItem("isFirst") == null) {
+						if ($(".y_productlist li:eq(0)").length > 0) {
+							$(".y_guidebox").show();
+							var y_item = $(".y_productlist li:eq(0)");
+							var y_top = y_item.offset().top
+									+ y_item.height() + 30;
+							y_item.addClass("y_guidelist");
+							$(".m_guide_box").css("top", y_top);
+						}
+						;
+						storage.setItem("isFirst", true);
+					}
+				}
+			});
+		}
+
+		function loadCatalogs(){
+			var url=getProjectPath()+"/app/distributionproduct/toCatalogList";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(json){
+					var data="";
+					var result=eval(json);
+					if(result !=null && "" !=result){
+						$.each(result,function(i, field) {
+							if(i%4==0){
+								//高亮只需class属性里面加上active
+								data+="<a href='javascript:void(0);' name="+field.uuid+" onclick='getDatas(this)' class='m_itme_a'>"+field.categoryName+"</a>";
+							}else{
+								data+="<a href='javascript:void(0);' name="+field.uuid+" onclick='getDatas(this)'>"+field.categoryName+"</a>";
+							}
+				        });
+						$(".m_itme").append(data);
+					}
+				}
+			});
+			/* $.getJSON(getProjectPath() + "/app/distributionproduct/toCatalogList",function(json){
+				var data="";
+				 $.each(json, function(i, field){
+						if(i%4==0){
+							//高亮只需class属性里面加上active
+							data+="<a href='javascript:void(0);' name="+field.uuid+" onclick='getDatas(this)' class='m_itme_a'>"+field.categoryName+"</a>";
+						}else{
+							data+="<a href='javascript:void(0);' name="+field.uuid+" onclick='getDatas(this)'>"+field.categoryName+"</a>";
+						}
+				 });
+				 $(".m_itme").append(data);
+			}); */
+			
+			$(".m_varieties_box").on('click','.m_itme a',function(){
+				$(".m_varieties_box").slideToggle();
+				$(this).addClass("active").siblings("a").removeClass("active") 
+				 return false;
+			}); 
+		}
+
+		function getDatas(obj) {
+			$("#good_data_list").empty();
+			var areaUuid = $("#areaHiddenUuid").val();
+			loadData(1, 6, "", "", obj.name, areaUuid);
+			//alert(obj.name);
+		}
+
+		function getPage(obj, orderBy) {
+			$("#goods_top_btn li").removeClass("active");
+			$(obj.parentNode).addClass("active");
+			$("#goodsViewType").val(orderBy);
+			$("#good_data_list").empty();
+			$("#pageNo").val("2");
+			var areaUuid = $("#areaHiddenUuid").val();
+			loadData(1, 6, orderBy, "", "", areaUuid);
+		}
+
+		$("#distribution_goods_select").click(function() {
+			var productName = $("#distribution_goods_name").val();
+			$("#good_data_list").empty();
+			var areaUuid = $("#areaHiddenUuid").val();
+			loadData(1, 6, "", productName, "", areaUuid);
+
+		})
+
+		function loadAreaData() {
+			var areaUuid = $("#areaHiddenUuid").val();
+			var url=getProjectPath()+"/app/locationarea/getAreaByCode";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{
+					"code" : areaUuid,
+					ranNum : Math.random()
+				},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						var areaName = data.areaName;
+						$("#areaAddress").text(areaName);
+					}
+				}
+			});
+		}
+		 //跳转到分销计划列表
+		function goDistributionPlan(){
+			//调用原生接口
+			App.run('goDistributionPlan', {});
+		}
+		//跳转到选择地区
+		function goSelectArea(fromPage){
+			//调用原生接口
+			App.run('goSelectArea', {fromPage:fromPage});
+		}
+		
+		//跳转到商品详情
+		function goProductDetail(uuid, planUuid, distributorUuid){
+			//调用原生接口
+			App.run('goProductDetail', {uuid:uuid,planUuid:planUuid,distributorUuid:distributorUuid});
+		}
+		
+		//分享
+		function share(picUrl,title,describe,appraise,targetUrl){
+			//调用原生接口
+			App.run('share', {picUrl:picUrl, title:title, describe:describe, appraise:appraise, targetUrl:targetUrl})
+
+		}
+		
+	</script>
+</body>
+</html>

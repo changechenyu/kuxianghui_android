@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_actionbarview.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8617f450010ecdc469b400982e5b42c31239a82f">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_actionbarview-413cc2d2da952aa9c3d5691165b65952a358fa46.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-b5bb28b253ca84d3ddf974d786a67c3cdc76f7e8.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-e946e594bce82e3ec52deb652fbc4533c2b867a4.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\umeng_social_sdk.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4688dc44ccef22b7f057301ee6abbe187a8d35ea">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\umeng_social_sdk-64d17dbd331d65494b4abec786d89f0e13e63cd0.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\tclsdk_v2.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f5b460d7d19ec9e2179a35d14b7064d1d018bc5c">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\tclsdk_v2.0.0-d6b1ead3eed18a6b824faeeb4cb6f74cc4ab8bc1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\GetuiSDK2.6.1.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="3100fe637e8a196d202d7ab652355d5ecc31d465">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\GetuiSDK2.6.1.0-51f1b7c593568c20d286ec6f4340d423fc71c2c1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\alipaySDK-20150818.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6dde19fc34adb03c637b17fdaa754e0c02cf75a0">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\alipaySDK-20150818-ae41ab0566824ef0d6f94c05b6975c96a74d3d7b.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\classes-6470f7e900df93dcc08d62a9f80f5a71a692995c.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_QQZone_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_1-a849598b38a8bb36da6478a6b41ea54a83bf76e9.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_scrshot.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4dc6f6adcfa03644f08ffa15890b40a650aa62ba">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_scrshot-bf55153b5c615eb7ba16de7bc8c9974faa345317.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_shake.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="674b96fd9638c3e1255218dd69f23ad3a6210227">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_shake-938b087ca07f47f88dd220c58fb662882a57d99d.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_line.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c2559b2d77e45b2a8ce585f80c090b4d55092692">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_line-bd858b9136ea8cb69257dd49ebc543ba3078ecb1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_email.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a3035cf2249ebc09a5b5204362a8cc0a653f9589">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_email-4455efa8fe1c2becac0199a9743ed4c539dd90de.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\baidumapapi_v3_2_0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="46ca4c3c74e1ddc60b45c490485e5df05babe6a5">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\baidumapapi_v3_2_0-77c0eb6c7fdc62ed3cb1a7be7fc9cdcc393584b7.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_kakao.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="27efa5feea44f47c6cec37c56e78c56f64f8f9e8">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_kakao-1808a9baa6b4b590c5844be213d33c92d6e481fb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Think\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\1.7.2\112366d8158749e25532ebce162232c6e0fb20a5\gson-1.7.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="112366d8158749e25532ebce162232c6e0fb20a5">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\gson-1.7.2-f839f7351740a940108502d49e829e08de7af801.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_tencentWB_3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ffa8f4a76d210b0e34c255891e4d7478faf7b918">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_tencentWB_3-e0cadb5625c0b2c3740aea39d56078e1b6505fe0.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\httpmime-4.1.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e70d34d98f7f7f3b2b92105b9f2fe2a7a7184461">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\httpmime-4.1.3-168e7b70a1a3e38322dcb9903f0c2b80768434b6.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_QQZone_3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="931ab461b91c2a2fd5c697e7f622cdca8c2b3ac5">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_3-c03a152933dfddb1de5cd025d60c298ab224be8e.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\locSDK_6.12.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="010b23f54856d560fe7cd47fbe6659d916db19f1">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\locSDK_6.12-6b32073143c73e023972749b2d3bd047bf188ffa.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_flickr.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6adc43a02c60734693cd0e62fc466eaddd934c84">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_flickr-cbb3ef9b20dcae4f84572e98cdc8e4b14c6ca584.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_WeiXin_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="b651be701cb256e3972e7c5a07119f26bb7b44a4">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_2-7a297118ceaf8ba2947e430891c9e6445deb0030.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_tencentWB_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6f744074067eb201171c9c8ff1ca45ed821a76a8">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_tencentWB_2-2ddb639acef5203de63f7a8ba310eceea5c6cc8f.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_ynote.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="45b9934972e608b88f3501f16c36c30cf72ade02">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_ynote-ac1dbeb13c212e08b30e88fda4916db45c6e91d0.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_comment.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1913fe82fed9f3cd0f9fcc311c23e07292644de5">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_comment-4f6c83e02adf36ee8d9f24c5e93560bd249e2719.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_tencentWB_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="328c5351cae13f2ab29450d22b6c02d0ac88a855">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_tencentWB_1-b50972563a52e877d1acc21feb6e7c550bde2d01.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_sms.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ae93280308ce10442ffb9c8c716977940471dc7a">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_sms-bfa43bddfb8fd8bb594e9fec65d34e0b9b2e04b5.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_facebook_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="00f01ae2985f8e128050ec4ff1beeeaf3979d2cf">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_facebook_2-72454c120ed588facf47554ac147e68779befe12.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_foursquare.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="9a78b719deb17d9f165f94b21c1c85c841771dc8">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_foursquare-0fc8fecec715d24924d25c21948cd1bdb2927d2d.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_pinterest.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d09e8c77b1214463aa6461f3b7cf1fa114c69498">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_pinterest-d6aea12677d519fa33c54cc8e3e9eb4ed19c9c4a.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_laiwang_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="5778375ae0d0aa13d1e8f810116bce0672ad7973">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_laiwang_1-9a4bbd8774ccc3ea42a3f4bf64f28c1a352c8ea9.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\UPPayAssistEx.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e9b0978614427e34dec47576c6dc335a89c7e9e4">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\UPPayAssistEx-fcbc86fd59d294796ae65004a0f48911dcf1c0c7.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\UPPayPluginExStd.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7397698b85eafb750dc911d487050f4e4a02ed13">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\UPPayPluginExStd-124ff25889b5b865392a5eb17c3f848915bc11e1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\umeng-analytics-v5.5.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="5d503ec571e2e98d972209afa203f94d11882c15">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\umeng-analytics-v5.5.3-21002ab390659063c8ec818702db57be44bfc05d.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\zxing.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="96b67e377ff4637ff1fa3bbe9ad7183773935f39">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\zxing-8cd872c41a1845d24b90f94d23ba712cc72c62a7.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\nineoldandroids-2.4.0-6375c1a1802119312b4524d1b7abff3d7beec08a.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\universal-image-loader-1.8.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="212dff9b98c634495573061857cb05dd3151f169">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.8.5-8e7a7ac5053b3b851928bedf0326e22088f8e581.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\classes-966e8616e862d2fca1598b0edc5c9f9ba254d2b7.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_evernote.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="0666f34c3bf01b02b13f219226cf6cf17fc9be8f">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_evernote-0f0e56bf8d9beb930685265820c9f992c9c2bed6.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_QQZone_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4a69b33758dcba3ef519cbd4b6c8af5f41603c4f">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_2-40a6fe4ef73121b5910ced60f6153348c89b7707.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_like.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="18c87f83fb936fb724ea6adb76795584511318e8">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_like-7a151e276ed465fdf8d6ac8193667b77918fa395.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_UserCenter.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="bf94805f7acf33cae34a315bbf4d554e6c15b87e">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_UserCenter-3521485bc07d9af308b33b12dd733d2f8773ec99.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_AtFriends.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="801adcdfad1a73f352ab0fbfadaf315e88b26823">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_AtFriends-6fb053de4f23eb348f52790ac2d9bf8f7770f6a4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Think\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-512ef45fc8b241ea4802d1b0f4a695a3dace0207.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_linkedin.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a5f28aafb5b50fc114a296e2c88b1003f02973f6">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_linkedin-2578a33e1262346b28b637d74048433d6b23daaf.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\GetuiExt-2.0.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7825bfa9135d693e2046eab96fd94e724e0f9eda">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\GetuiExt-2.0.3-f8a16db063bf6dcd5e117de9bc3eb8cc5e341836.jar" />
+    </item>
+    <item
+        jar="C:\Users\Think\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\library-1.0.19-04f482d87d1c1879ed8de4afb51d28cd2e5c9a3c.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\umeng-update-v2.6.0.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7bfeea30c4995f90a4374ce4177772a4579f2797">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\umeng-update-v2.6.0.1-e7cd54d61ec898791698a33e37f9f8b51667099f.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_laiwang_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="23472dc1bfab9ee666f21183f17e46b08f87531f">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_laiwang_2-f500c2c3c482b97dc56082c642f4a44ca427418e.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_tumblr.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="44d6a4be1e7d4a61a5a7e59ce4ed759d870875ce">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_tumblr-0234016b9b49bbf16723dd649080483f0b59067a.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_whatsapp.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="b13d91849c709b5831176d0e6b122758f3a0a5ea">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_whatsapp-9fdf7148b295b5aad4405c2f3d59d03126f30916.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_yixin_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="0b76e0baa9d33735bb65952ac97e8f522458ba0c">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_yixin_2-b4ca5fd946fead86ee8944013be2b711f670ff49.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_pocket.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="797eccea48c403a83918c0a0ca950b411c55ddf1">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_pocket-29a16421b93320a03d33785150fb0e99f11c29cc.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_WeiXin_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_1-1bb0ef831af9fb6fd2e70b219ea0eaad0ca21515.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_yixin_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8fa68a3bb5ae6231cd4ccaf355d80c6f3725d0ca">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_yixin_1-70d31819494def4468eeb2e87c586938c67cfba1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_Sina.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a6eee0ece63ba5e74411057d09eda1a5a01ca940">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_Sina-c7a8a83b1982a7f3e40fcae3055fc98ff325edc1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_renren_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="0ca209d760b28d73bbe444888cdd0c20eeaacbc3">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_renren_1-a484fa5385c5ecf3cb597f71910e7367ab0a36df.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_facebook_1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="41a79614adcfc72743618ceff4fb4181f0e34ea0">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_facebook_1-4058f726a253c2fb107e5d3147d6b6d31b4e8360.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_instagram.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="25a71316e20a8c82f3287c3f67ff9b49afb2bf67">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_instagram-afe92d590f8ce6145920b2aa9cac09829c248ee1.jar" />
+    </item>
+    <item
+        jar="H:\kuxianghui_android\app\libs\SocialSDK_renren_2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="af844c5e951f7eb789e56792272f441348e81eeb">
+        <dex dex="H:\kuxianghui_android\app\build\intermediates\pre-dexed\debug\SocialSDK_renren_2-e439d3e186ba61f42c81292c4c56df2512bcdef9.jar" />
+    </item>
+
+</items>

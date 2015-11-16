@@ -1,0 +1,329 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-首页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--首页焦点图-->
+	<section class="y_banner" id="mySwipe">
+		<div class='swipe-wrap' id="ad">
+		</div>
+		<div class="y_qhdiv" id="position">
+			<span class="cur"></span>	
+			<span></span>
+			<span></span>
+		</div>
+	</section><!--首页焦点图 end-->
+	<!--首页导航-->
+	<nav class="y_indexnav">
+		<a href="javascript:goCategorys()">
+			<span><img src="img/index_ico1.png"></span>
+			类目
+		</a>
+		<a id="hotPlans" >
+			<span><img src="img/index_ico2.png"></span>
+			热门计划
+		</a>
+		<a id="hotProducts">
+			<span><img src="img/index_ico3.png"></span>
+			热门商品
+		</a>
+		<a id="newProducts">
+			<span><img src="img/index_ico4.png"></span>
+			新品惠
+		</a>
+	</nav><!--首页导航 end-->
+	<!--首页公告-->
+	<section class="y_indexnotice">
+		<div class="y_hidden">
+			<p class="y_notictit">
+				<span class="y_icon"><img src="img/index_content.png"></span>	
+				活动公告：
+			</p>
+			<div class="flexslider text_ad" id="horizontal_ad">
+			  <ul class="slides" >
+			   
+			  </ul>
+			</div>
+		</div>
+	</section><!--首页公告 end-->
+	<!--精品推荐-->
+	<section class="y_indexproduct">
+		<header>
+			<h2>精品推荐</h2>
+			<a href="javascript:goDistributionGoods()" class="y_more">更多</a>	
+		</header>
+		<ul class="y_indexpdlist" id="recommendProducts">
+		</ul>
+	</section><!--精品推荐 end-->
+	<!--新品热卖-->
+	<section class="y_indexproduct">
+		<header>
+			<h2>新品热卖</h2>
+			<a href="javascript:goDistributionGoods()" class="y_more">更多</a>	
+		</header>
+		<ul class="y_indexpdlist" id="newSaleProducts">
+		</ul>
+	</section><!--新品热卖 end-->
+	
+	<script src="js/swipe-min.js" type="text/javascript"></script>
+	<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		loadAd();
+		
+		loadContent();
+		loadRecommendProduct();
+		newSaleProduct();
+		loadPage();
+		//加载列表数据
+		function loadPage(){
+			var url=getProjectPath()+"/app/decorate/getCompParams";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{compId:"hotPlans",paramName:"param_planuuids",pageName:"index",ranNum:Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					$("#hotPlans").click(function(){
+					 	goHotPlan(data);
+					});
+				}
+			});
+			
+		        $.ajax({
+					type:"get",
+					async:false,
+					url:url,
+					data:{compId:"hotProducts",paramName:"param_productuuids",pageName:"index",ranNum:Math.random()},
+					jsonp:"jsonpcallback",
+					dataType : "jsonp",//数据类型为jsonp
+					success : function(data){
+						 $("#hotProducts").click(function(){
+								goDefineGoods(data,"hotProducts");
+						});
+					}
+				});
+			
+		        $.ajax({
+					type:"get",
+					async:false,
+					url:url,
+					data:{compId:"newProducts",paramName:"param_newproductuuids",pageName:"index",ranNum:Math.random()},
+					jsonp:"jsonpcallback",
+					dataType : "jsonp",//数据类型为jsonp
+					success : function(data){
+						$("#newProducts").click(function(){
+							goDefineGoods(data,"newProducts");
+						});
+					}
+				});
+		}
+		function loadContent(){
+			var url=getProjectPath()+"/app/decorate/getComp";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{compId:"activityNotice",paramName:"param_contentuuids",pageName:"index",ranNum:Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						$.each(result,function(i, content) {
+							var html ="<li>"+ 
+									//"<a href='help_view.html?contentUuid="+content.uuid+"&pageName=activityNotice'>"+content.contentTitle+"</a>";
+									"<a href='javascript:goNoticeDetail(\""+content.uuid+"\",\"activityNotice\")'>"+content.contentTitle+"</a>";
+									"</li>";
+							$(".slides").append(html);
+				        });
+						//活动公告文字滚动广告
+						$('#horizontal_ad').flexslider({
+							animation:"slide",
+							direction:"vertical",
+							slideshowSpeed:4000,
+							controlNav:false,	
+							directionNav:false
+						});
+					}
+				}
+			});
+			
+		}
+		function loadRecommendProduct(){
+			var url=getProjectPath()+"/app/decorate/getComp";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{compId:"recommendProducts",paramName:"param_recommendproductuuids",pageName:"index",ranNum:Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						$.each(result, function(i, product) {
+							var html ="<li>"+"<a href=\"javascript:goProductDetail('"+product.product.productMain.uuid+"','"+product.planUuid+"','"+product.disUuid+"')\">";
+							if(product.product !=null && "" !=product.product){
+								if(product.product !=null && "" !=product.product){
+									if(product.product.productImage !=null && "" !=product.product.productImage){
+										//html+="<div class='y_pic'><img src='img/adimg/banner1.jpg'></div>";
+										html+="<div class='y_pic'><img src='"+product.product.productImage.mainImageUrl+"'></div>";
+									}else{
+										html+="<div class='y_pic'><img src='img/adimg/product220.jpg'></div>";
+									}
+									
+								}else{
+									html+="<div class='y_pic'><img src='img/adimg/product220.jpg'></div>";
+								}
+							}else{
+								html+="<div class='y_pic'><img src='img/adimg/product220.jpg'></div>";
+							}
+							
+								html+="<p class='y_name'>"+product.product.productInfo.productName+"</p>"+
+											"<span class='y_price'>¥<span>"+product.product.shopPrice+"</span></span>"+
+											"<label class='y_salesize'>销量"+product.number+"</label>"+
+										"</a>"+
+									"</li>";
+							$("#recommendProducts").append(html);
+				        });
+					}
+				}
+			});
+			
+		} 
+		function newSaleProduct(){
+			var url=getProjectPath()+"/app/decorate/getComp";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{compId:"newSale",paramName:"param_newproductuuids",pageName:"index",ranNum:Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						$.each(result, function(i, product) {
+							var html ="<li>"+ "<a href=\"javascript:goProductDetail('"+product.product.productMain.uuid+"','"+product.planUuid+"','"+product.disUuid+"')\">";
+							if(product.product !=null && "" !=product.product){
+								if(product.product !=null && "" !=product.product){
+									if(product.product.productImage !=null && "" !=product.product.productImage){
+										
+										html+="<div class='y_pic'><img src='"+product.product.productImage.mainImageUrl+"'></div>";
+									}else{
+										html+="<div class='y_pic'><img src='img/adimg/product220.jpg'></div>";
+									}
+									
+								}else{
+									html+="<div class='y_pic'><img src='img/adimg/product220.jpg'></div>";
+								}
+							}else{
+								html+="<div class='y_pic'><img src='img/adimg/product220.jpg'></div>";
+							}			
+								html+="<p class='y_name'>"+product.product.productInfo.productName+"</p>"+
+											"<span class='y_price'>¥<span>"+product.product.shopPrice+"</span></span>"+
+											"<label class='y_salesize'>销量"+product.number+"</label>"+
+											"</a>"+
+									"</li>";
+							$("#newSaleProducts").append(html);
+				        });
+					}
+				}
+			});
+			
+		}
+		function loadAd(nowPage,pageShow,orderBy){
+			var url=getProjectPath()+"/app/decorate/getComp";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{compId:"bannerAds",paramName:"param_aduuid",pageName:"index",ranNum:Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						$.each(result, function(i, ad) {
+							 var html =	"<div>";
+								html+=		"<a href="+ad.url+"><img src="+ad.imageUrl+"></a>";
+									html+=		"</div>";
+							$("#ad").append(html); 
+				    });
+				    //首页banner 切换js
+						var elem = document.getElementById('mySwipe');
+						var bullets = document.getElementById('position').getElementsByTagName('span'); 
+						window.mySwipe = Swipe(elem, {
+							speed: 500,
+						  auto: 3000,
+						  callback: function(pos) {
+								var i = bullets.length;
+								while (i--) {
+									bullets[i].className = ' ';
+								}
+								bullets[pos].className = 'cur';
+							}
+						});
+					}
+				}
+			});
+			 
+		}
+		
+	</script>
+	
+	<script>
+		//跳转到热门计划列表
+		function goHotPlan(uuids){
+			//调用原生接口
+			App.run('goHotPlan', {uuids:uuids})
+		}
+		//跳转到热门商品，新品惠
+		function goDefineGoods(uuids, pageName){
+			//调用原生接口
+			App.run('goDefineGoods', {uuids:uuids,pageName:pageName})
+		}
+		//跳转到公告详情页
+		function goNoticeDetail(uuid, pageName){
+			//调用原生接口
+			App.run('goNoticeDetail', {uuid:uuid,pageName:pageName})
+		}
+		//跳转到分销商品列表
+		function goDistributionGoods(){
+			//调用原生接口
+			App.run('goDistributionGoods', {})
+		}
+		//跳转到类目列表
+		function goCategorys(){
+			//调用原生接口
+			App.run('goCategorys', {})
+		}
+		
+		//跳转到商品详情
+		function goProductDetail(uuid, planUuid, distributorUuid){
+			//调用原生接口
+			App.run('goProductDetail', {uuid:uuid,planUuid:planUuid,distributorUuid:distributorUuid});
+		}
+		
+
+	</script>
+	
+</body>
+</html>

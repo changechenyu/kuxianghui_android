@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-分销计划</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+<script src="js/jquery.cookie.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<section class="m_sort">
+		<!--分销计划排序-->
+		<ol id="topbut">
+			<li class="active"><a href="javascript:void(0);" onclick="getPage(this,'createTime')">按最新<s></s></a></li>
+			<li><a href="javascript:void(0);" onclick="getPage(this,'clickNumber')">按最热<s></s></a></li>
+			<li><a href="javascript:void(0);" onclick="getPage(this,'rate')">按佣金比例</a></li>
+		</ol><!--分销计划排序 end-->
+	</section>
+	<section class="m_list">
+		<ul id="dataSpace">
+			
+		</ul>
+		<!-- <ol style="text-align: center;">
+		<img id="loadingGif" alt="加载中..."  src="${pageContext.servletContext.contextPath}/static/frontpage/img/prettyPhoto/default/loader.gif" style="display: none;" >
+		<span id="loadingWenzi" style="display: none;">已加载完毕</span>
+		</ol> -->
+	</section>
+	
+		<!--列表无内容结构-->
+	<section class="list_none" style="display:none">
+		<div class="list_none_pic"><img src="img/none.png"></div>
+		<div class="list_none_tit y_mb10">暂无分销计划~~</div>
+	</section>
+	
+<!--获取定位弹出框--->
+<div class="bg_mask"></div>
+<section class="m_location" id="chooseLocation">
+	<h3>获取定位</h3>
+	<div class="location_body">
+		<p><s></s>酷享汇要使用您当前的位置：</p>
+		<div class="tit" >保山</div>
+	</div>
+	<div class="location_footer">
+		<!-- <a href="select_area_province.html?fromPage=distributionplan" class="m_btn m_btn1">手动选择</a> -->
+		<a href="javascript:goSelectArea('distributionplan')" class="m_btn m_btn1">手动选择</a>
+		<a href="javascript:void(0);" class="m_btn m_btn2">确 定</a>
+	</div>
+</section>
+	
+	<input type="hidden" id="pageNo" value="2"/>
+	<input type="hidden" id="orderBy" value="createTime"/>
+	
+	<script>
+		//关闭获取位置弹出框
+		$(".location_footer .m_btn2").click(function(){
+			$(".m_location").addClass("fade");
+			$(".bg_mask").addClass("fade");
+		});
+		
+		$("#areaLocation").click(function(){
+			$(".m_location").removeClass("fade");
+			$(".bg_mask").removeClass("fade");
+		});
+		
+		//分销商品下拉
+		$(".y_header .m_h1 .tit").click(function(){
+			var $popupbox =$("<div class='bg_mask1'></div>");
+			var y_header_height = $(".y_header").height();
+			var body_height = $("body").height();
+			if($(".y_header .m_h1 ul").hasClass("in")){
+			 $(".y_header .m_h1 ul").removeClass("in");
+			 $(".bg_mask1").removeClass("fade");
+			 $(".bg_mask1").remove();		
+	    }else{
+	    	$(".y_header .m_h1 ul").addClass("in");
+				$("body").append($popupbox);
+				$(".bg_mask1").css("height",body_height-y_header_height);
+				$(".bg_mask1").css("margin-top",y_header_height);
+	    }
+		});
+		
+		
+		$(function(){
+			// IE存在缓存问题,页面初始化时重置一下
+			$("#pageNo").val("2");
+			var areaCode = getRequestParam("areaCode");
+			if(areaCode!=null && areaCode!=""){
+				$(".m_location").addClass("fade");
+				$(".bg_mask").addClass("fade");
+				$.cookie("areaCode",areaCode);
+				getAreaName(areaCode);
+			}
+			else{
+				areaCode="145";
+				$.cookie("areaCode",areaCode);
+			}
+			
+			loadPage(1,5,'createTime',areaCode);
+		});
+		
+		function getAreaName(areaCode){
+			var url=getProjectPath()+"/app/locationarea/getAreaByCode";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{
+					"code" : areaUuid,
+					ranNum : Math.random()
+				},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						var areaName = data.areaName;
+						$("#areaLocation").text(areaName);
+					}
+				}
+			});
+		}
+		
+		function getPage(obj,orderBy){
+			$("#topbut li").removeClass("active");
+			$(obj.parentNode).addClass("active");
+			$("#orderBy").val(orderBy);
+			$("#dataSpace").empty();
+			$("#pageNo").val("2");
+			var areaCode=$.cookie("areaCode");
+			loadPage(1,5,orderBy,areaCode);
+		}
+		
+		/* $.ajaxSetup({
+			async : false
+		}); */
+		
+		
+		$.ajaxSettings.async = false; 
+		
+		// 检查加载是否完成
+		var finished=true;
+		
+		$(document).ready(function (){
+			var areaCode=$.cookie("areaCode");
+			var height=$(".m_list").height();
+			var pageShow = parseInt("5");
+			$(document).scroll(function (){
+				if(finished && $(document).scrollTop()>=$(document).height()-$(window).height()){
+					finished = false;
+					$("#loadingGif").show();
+					setTimeout(function(){
+						var pageNo = $("#pageNo").val();
+						var orderBy = $("#orderBy").val();
+						loadPage(pageNo,pageShow,orderBy,areaCode);
+						$("#pageNo").val(Number($("#pageNo").val())+1);
+						
+						$("#loadingGif").hide();
+					}, 500);
+				}
+			});
+		}); 	
+		//加载列表数据
+		function loadPage(nowPage,pageShow,orderBy,areaCode){
+			var url=getProjectPath()+"/app/plan/getPlanData/"+nowPage+"/"+pageShow;
+			
+			$.ajax({
+				type : "get",
+				async:false,
+				url : url,
+				data : {orderBy:orderBy,areaCode:areaCode,ranNum:Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var result=eval(data);
+					if(result !=null && "" !=result){
+						$(".list_none").hide();
+						$.each(result, function(i, plan) {
+							var html ="<li>"+ 
+								"<a href='javascript:goPlanDetail(\""+plan.uuid+"\")'><div class='itme'>"+
+								"<h2>"+plan.planName+"</h2>"+
+								"<p>"+plan.describeText+"</p>"+
+								"<div><s></s>"+plan.retailTraderName+"</div>"+
+								"</div></a>"+
+								
+								"<div class='itme_box'>"+
+								"<div>"+
+								"<span><s></s>佣金："+plan.minRate+"%-"+plan.maxRate+"%</span>"+
+								"</div>"+
+								"<div>"+
+								"<span><s class='m_s'></s>点击："+plan.clickNumber+"</span>"+
+								"</div>"+
+								"<div>"+
+								"<a href=\"javascript:share('','"+plan.planName+"','"+plan.describeText+"','','http://10.120.99.171/tclwap/front/productList/toProductZxList?planUuid="+plan.uuid+"&distributorUuid="+plan.disUuid+"')\"><s class='m_s1'></s>分享</a>"+
+								"</div>"+
+								"</div>"+
+								"</li>";
+							$("#dataSpace").append(html);
+				        });
+					}else{
+						$("#loadingGif").hide();
+						if(nowPage==1){
+							$(".list_none").show();
+						}
+					}
+				},
+				error:function(){
+					alert('fail');
+				}
+			});	
+			finished = true;
+		}
+		
+		//跳转到分销计划详情页
+		function goPlanDetail(uuid){
+			//调用原生接口
+			App.run('goPlanDetail', {uuid:uuid});
+		}
+		
+		//跳转到选择地区页面
+		function goSelectArea(fromPage){
+			//调用原生接口
+			App.run('goSelectArea', {fromPage:fromPage});
+		}
+		
+		//跳转到分销商品列表
+		function goDistributionGoods(){
+			//调用原生接口
+			App.run('goDistributionGoods', {});
+		}
+		//分享
+		function share(picUrl,title,describe,appraise,targetUrl){
+			//调用原生接口
+			App.run('share', {picUrl:picUrl, title:title, describe:describe, appraise:appraise, targetUrl:targetUrl})
+
+		}
+		
+		
+		
+	</script>
+</body>
+</html>

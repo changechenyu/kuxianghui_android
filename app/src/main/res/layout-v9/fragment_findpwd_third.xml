@@ -1,0 +1,67 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/findpwd_thirdsv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/input_bg"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:background="@color/input_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:gravity="center_horizontal" >
+            <!-- comfirmcode -->
+            <LinearLayout
+                android:id="@+id/code_layout"
+                style="@style/input_layout_style">
+                <EditText
+                    android:id="@+id/confirm_code_for_findpwd"
+                    android:inputType="textPassword"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/please_input_code"/>
+            </LinearLayout>
+            <!-- newpassword -->
+            <LinearLayout
+                android:layout_marginTop="@dimen/register_input_layout_margin_top"
+                android:id="@+id/newpassword_layout"
+                android:layout_below="@+id/code_layout"
+                style="@style/input_layout_style">
+                <EditText
+                    android:id="@+id/et_newpassword_for_findpwd"
+                    android:inputType="textPassword"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/new_password"/>
+            </LinearLayout>
+            <!-- confrimpassword -->
+            <LinearLayout
+                android:id="@+id/confirm_password_layout"
+                style="@style/input_layout_style"
+                android:layout_below="@+id/newpassword_layout"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top">
+                <EditText
+                    android:id="@+id/confirm_password_for_findpwd"
+                    style="@style/input_layout_edittext_style"
+                    android:inputType="textPassword"
+                    android:hint="@string/confirm_password_findpwd"/>
+            </LinearLayout>
+            <!-- login_button -->
+            <Button
+                android:id="@+id/btn_commit_findpwd_third"
+                style="@style/redbutton"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/confirm_password_layout"
+                android:layout_marginTop="@dimen/register_register_btn_margin_top"
+                android:text="@string/commit"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>

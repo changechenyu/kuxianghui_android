@@ -1,0 +1,188 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-我要投诉</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--列表信息-->
+	<nav class="y_orderviewlist">
+		<ul>
+			
+		</ul>
+	</nav>
+	<!--列表信息-->
+	
+	<!--列表信息-->
+	<nav class="y_complaintlist">
+ 		<ul>
+ 			<li>
+ 				<h2>投诉类型</h2>
+ 				<select id="complainType" class="form-control">
+ 					
+ 				</select>	
+ 			</li>
+ 			<li>
+ 				<h2>投诉标题</h2>
+ 				<input id="complainTitle" type="text" class="form-control" maxlength="20">
+ 			</li>
+ 			<li>
+ 				<h2>投诉内容</h2>
+ 				<textarea id="complainReason" class="form-control" rows=5 maxlength="200"></textarea>
+ 			</li>
+ 			<li>
+ 				<h2>投诉凭证</h2>
+ 				<section class="y_uppiclist clearfix">
+ 					<span class="y_hasimg"><input type="file" capture="camera" accept="image/*" id="image1" name="myfiles" onchange="javascript:uploadImage(this)">+</span>	
+ 					<span class="y_hasimg"><input type="file" capture="camera" accept="image/*" id="image2" name="myfiles" onchange="javascript:uploadImage(this)">+</span>	
+ 					<span class="y_hasimg"><input type="file" capture="camera" accept="image/*" id="image3" name="myfiles" onchange="javascript:uploadImage(this)">+</span>	
+ 				</section>
+ 			</li>	
+ 		</ul>
+ 		<a id="submitbtn" href="javascript:void(0);" class="btn btn-custom2 btn-block">提交投诉</a>
+	</nav>
+	<!--列表信息-->
+	
+<script type="text/javascript" src="js/jquery-param.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+var storeUuid = getRequestParam("storeUuid");
+var storeName = getRequestParam("storeName");
+var orderNo = getRequestParam("orderNo");
+
+function uploadImage(obj){
+	var id= obj.id;
+	var value = obj.value;
+	var flag = false;
+	if(value!=""){
+	    var suffix = value.substr(value.lastIndexOf(".")+1);
+	    flag = ("jpg"==suffix) || ("jpeg"==suffix) || ("bmp"==suffix) || ("png"==suffix);
+	}
+	if(!flag){
+		showToast("请选择图片文件");
+		return false;
+	}
+	
+	$.ajaxFileUpload({
+		
+   		url: getProjectPath() + '/app/complaint/uploadFile', //用于文件上传的服务器端请求地址
+    	secureuri: false, //是否需要安全协议，一般设置为false
+    	fileElementId: id, //文件上传域的ID
+    	dataType: 'json', 
+    	success: function (data,status){ 
+    		if(data.file!=null){
+	    		var str = "<img src='"+ data.file['remotePaths'] +"'><b class='y_imgclose' onclick='javascript:removeImage(this);'><span>x</span></b><input type='hidden' id='"+ id +"' name='"+ id +"' value='"+ data.file['fileName'] +"'>"
+    			$("#"+id).parent().html(str);
+    		}  
+    	},
+	    error: function (data, status, e){
+	    	//服务器响应失败调用原生接口
+				window.js_invoke.shouToast("上传失败!");          
+	    }
+   });
+	
+   return false;
+}
+
+function removeImage(obj){
+	var id = $(obj).siblings(":hidden").attr("id");
+	var str = "<input type='file' capture='camera' accept='image/*' id='"+ id +"' name='myfiles' onchange='javascript:uploadImage(this)'>+";
+	$(obj).parent().html(str); 
+}
+
+$(function(){
+	getComplainType();
+});
+
+$(".y_orderviewlist").find("ul").html("<li>被投诉库商<span class='y_ms'>"+ storeName +"</span></li>");
+
+// 提交
+$("#submitbtn").click(function(){
+	var complainType = $("#complainType").val();
+	var complainTitle =$("#complainTitle").val();
+	var complainReason = $("#complainReason").val();
+	
+	if(complainTitle==""){
+		showToast("请输入投诉标题");
+		return false;
+	}
+	if(complainReason==""){
+		showToast("请输入投诉内容");
+		return false;
+	}
+	$(this).addClass("disabled");
+	var url=getProjectPath()+"/app/complaint/saveComplaint";
+	$.ajax({
+		type:'post',
+		async:false,
+		url:url,
+		data:{
+			storeUuid:storeUuid,
+			storeName:storeName,
+			orderNo:orderNo,
+			complainType:complainType,
+			complainTitle:complainTitle,
+			complainReason:complainReason,
+			image1:$("#image1").val(),
+			image2:$("#image2").val(),
+			image3:$("#image3").val()
+		},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success:function(data){
+			if(data){
+				//调用原生接口
+				App.run('goComplaintSuccess', {});
+			}
+		},
+		error:function(){
+			//调用原生接口
+			showToast("申请失败!");
+		}
+	});
+	
+});
+
+function getComplainType(){
+	$.ajax({
+		type:"get",
+		url:getProjectPath() + "/app/complaint/getComplainType",
+		cache:false,
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success:function(data){
+			var str ="";
+			$.each(data,function(k,v){
+				str +="<option value='"+ k +"'>"+ v +"</option>";
+			});
+			
+			$(".y_complaintlist").find("select").html(str);
+		},
+		error:function(){
+			//调用原生接口
+			showToast("获取数据出错啦!");
+		}
+	});
+}
+//弹出框
+function showToast(message){
+	//调用原生接口
+	App.run('showToast', {message:message});
+
+}
+</script>
+</body>
+</html>

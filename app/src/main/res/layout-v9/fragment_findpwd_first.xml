@@ -1,0 +1,88 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/findpwdsv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/input_bg"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:background="@color/input_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:gravity="center_horizontal" >
+            <!-- Email -->
+            <LinearLayout
+                android:id="@+id/findpwd_email_address_layout"
+                style="@style/input_layout_style">
+                <EditText
+                    android:id="@+id/et_email_for_findpwd"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/telephone_email"/>
+            </LinearLayout>
+
+            <!-- verification -->
+            <LinearLayout
+                android:id="@+id/findpwd_verification_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/findpwd_email_address_layout"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top"
+                >
+                <LinearLayout
+                    android:id="@+id/findpwd_verification_code_layout"
+                    android:layout_width="160dp"
+                    android:layout_weight="1"
+                    style="@style/input_layout_verification_code_style" >
+                    <EditText
+                        android:id="@+id/et_input_verification_code_findpwd"
+                        style="@style/input_layout_edittext_style"
+                        android:inputType="number"
+                        android:layout_toLeftOf="@+id/iv_verification_code"
+                        android:hint="@string/vercode" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/findpwd_verification_code_layout1"
+                    android:layout_width="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    style="@style/input_layout_verification_code_style">
+                    <ImageView
+                        android:id="@+id/find_pwd_code"
+                        android:layout_marginTop="3dp"
+                        android:layout_width="60dp"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/codeone"
+                        />
+                    <TextView
+                        android:layout_weight="1"
+                        android:id="@+id/findpwd_change_one"
+                        android:paddingTop="13dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:textColor="@drawable/btn_forgetpwd_text_color_selector"
+                        android:text="换一张"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- login_button -->
+            <Button
+                android:id="@+id/btn_findpwd_first_next"
+                style="@style/redbutton"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/findpwd_verification_layout"
+                android:layout_marginTop="@dimen/register_register_btn_margin_top"
+                android:text="@string/next"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-帮助中心详情</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--标题-->
+	<section class="y_helpview" id="content">
+		<!-- <h2>下单后可以修改订单吗？</h2>
+		<article>
+			由TCL快递发货的订单，在订单打印之前可以修改，打开“订单详情”页面，点击右上的“修改订单”即可，若没有修改订单按钮，
+			则表示订单无法修改。由TCL快递发货的订单，在订单打印之前可以修改，打开“订单详情”页面，点击右上的“修改订单”即可，
+			若没有修改订单按钮，则表示订单无法修改。
+		</article> -->
+	</section><!--标题-->
+	<script src="js/swipe-min.js" type="text/javascript"></script>
+	<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+	<script>
+	loadPage();
+	//加载列表数据
+	function loadPage(){
+		loadContent();
+		var pageName=getRequestParam("pageName");
+		if(pageName=="activityNotice"){
+			$("h1").text("公告详情");
+			//$(".y_back").attr("href","javascript:goIndex()");
+			 $(".y_back").click(function(){
+				 goIndex();
+				});
+		}
+	}
+	
+	function loadContent(){
+		var contentUuid=getRequestParam("contentUuid");
+		var url=getProjectPath()+"/app/helpcenter/toContent";
+		$.ajax({
+			type:"get",
+			async:false,
+			url:url,
+			data:{"contentUuid":contentUuid,ranNum:Math.random()},
+			jsonp:"jsonpcallback",
+			dataType : "jsonp",//数据类型为jsonp
+			success : function(data){
+				var content = eval(data);
+				var html ="<h2>"+content.contentTitle+"</h2>"+
+						  "<article>"+content.introduction+"</article>";
+				$("#content").append(html);
+			}
+		});
+	}
+	
+	//跳转到首页
+	function goIndex(){
+		//调用原生接口
+		App.run('goIndex', {});
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/input_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:background="@color/input_bg"
+            android:gravity="center_horizontal" >
+            <!--name -->
+            <LinearLayout
+                android:id="@+id/email_address_layout"
+                android:visibility="gone"
+                style="@style/input_layout_style">
+                <EditText
+                    android:id="@+id/name_for_register"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/name"/>
+            </LinearLayout>
+
+            <!--telephone -->
+            <LinearLayout
+                android:id="@+id/telephone_layout"
+                style="@style/input_layout_style"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top">
+                <EditText
+                    android:id="@+id/telephone_register"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="昵称"/>
+            </LinearLayout>
+
+            <!--password -->
+            <LinearLayout
+                android:id="@+id/password_register_layout"
+                style="@style/input_layout_style"
+                android:layout_below="@+id/telephone_layout"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top">
+
+                <EditText
+                    android:inputType="textPassword"
+                    android:id="@+id/password_for_register"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/passwrod"/>
+            </LinearLayout>
+            <!--comfrim password -->
+            <LinearLayout
+                android:id="@+id/comfrim_password_layout"
+                style="@style/input_layout_style"
+                android:layout_below="@+id/password_register_layout"
+                android:layout_marginTop="@dimen/register_input_layout_margin_top">
+
+                <EditText
+                    android:inputType="textPassword"
+                    android:id="@+id/comfirm_password"
+                    style="@style/input_layout_edittext_style"
+                    android:hint="@string/confirn_password_register"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/id_agree_layout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/comfrim_password_layout"
+                android:gravity="center_vertical"
+                android:layout_marginTop="15dp"
+                >
+                <CheckBox
+                    android:id="@+id/cb_agree_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/register_checkbox_bg_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="0dp"
+                    android:textSize="15dp"
+                    android:text="@string/agree"/>
+                <TextView
+                    android:id="@+id/tv_register_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@drawable/btn_get_vercode_text_color_selector"
+                    android:layout_toRightOf="@+id/cb_agree_register"
+                    android:textSize="15dp"
+                    android:text="@string/register_agreement_u" />
+            </RelativeLayout>
+            <!-- login_button -->
+            <Button
+                style="@style/redbutton"
+                android:id="@+id/btn_login_register"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/id_agree_layout"
+                android:layout_marginTop="@dimen/register_register_btn_margin_top"
+                android:text="@string/register"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

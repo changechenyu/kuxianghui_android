@@ -1,0 +1,22 @@
+﻿<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1,minimum-scale=1" />
+	<title>APP活动按钮测试</title>
+</head>
+<body>
+<p>
+	<button onclick="goHotPlan('aaaa')">去店铺</button>
+</p>
+<p>
+	<button onclick="goHotPlan('cccc')">获取token</button>
+</p>
+
+<script type="text/javascript">
+	function goHotPlan(sdsd) {
+		alert("getToken");
+		window.js_invoke.goHotPlan(sdsd);
+	} ;
+</script>
+</body>
+</html>

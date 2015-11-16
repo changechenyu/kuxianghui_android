@@ -1,0 +1,12 @@
+<resources>
+
+	<!--string name="mine_customer">我的客户</string>
+	<string name="mine_get_money_history">我的提现</string>
+	<string name="mine_order">我的订单</string>
+	<string name="mine_income">我的收益</string>
+	<string name="mine_complaint">我的投诉</string>
+	<string name="mine_change_pass">修改密码</string>
+	<string name="mine_help">帮助中心</string>
+	<string name="mine_feedback">反馈建议</string>
+	<string name="logout">退出登录</string-->
+</resources>

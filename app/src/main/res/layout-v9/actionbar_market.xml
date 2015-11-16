@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionbar_height"
+                android:background="@drawable/actionbar_bg"
+                android:gravity="center_vertical">
+
+	<RelativeLayout
+			android:id="@+id/rl_plan_goods"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:baselineAligned="false"
+			android:clickable="true"
+			android:layout_centerVertical="true"
+			android:onClick="handleActionBarClick"
+			android:orientation="horizontal"
+			android:layout_centerInParent="true">
+		<TextView
+				android:id="@+id/action_bar_text"
+				android:text="@string/market_plan"
+				android:layout_centerVertical="true"
+				style="@style/actionbar_title_text_style_clickable"
+				android:layout_marginLeft="@dimen/gap_actionbar_market_text"
+				android:paddingRight="6dp" />
+		<ImageView
+				android:id="@+id/iv_arrow_down"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_toRightOf="@+id/action_bar_text"
+				android:layout_marginRight="@dimen/gap_actionbar_market_text"
+				android:src="@drawable/icon_down" />
+
+	</RelativeLayout>
+
+	<RelativeLayout
+			android:id="@+id/rl_locate"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:baselineAligned="false"
+			android:clickable="true"
+			android:layout_centerVertical="true"
+			android:onClick="handleActionBarClick"
+			android:orientation="horizontal"
+			android:layout_alignParentRight="true">
+
+		<ImageView
+				android:id="@+id/iv_locate"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="@dimen/gap_actionbar_market_text"
+				android:src="@drawable/icon_coordinate" />
+		<TextView
+				android:id="@+id/tv_locate"
+				android:text="@string/general_city"
+				android:layout_centerVertical="true"
+				style="@style/actionbar_title_text_style_clickable"
+				android:textSize="13sp"
+				android:textColor="@color/color_8f"
+				android:layout_toRightOf="@+id/iv_locate"
+				android:layout_marginLeft="1dp" />
+	</RelativeLayout>
+</RelativeLayout>

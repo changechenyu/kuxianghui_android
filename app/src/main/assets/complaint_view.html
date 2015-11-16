@@ -1,0 +1,146 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-投诉详情</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css"
+	media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+	<!--列表信息-->
+	<nav class="y_orderviewlist">
+		<div id="dataSpace"></div>
+	</nav>
+	<!--信息-->
+
+	<!--投诉按钮-->
+	<footer class="y_orderbtnbox" id="toCancleComplaint" style="display:none">
+		<div class="y_orderbtn">
+			<div >
+				<input type="hidden" id="HiddencomplaintUuid">
+				<a href="javascript:cancel();" class="btn btn-custom" data-toggle="modal">撤销投诉</a>
+			</div>
+		</div>
+	</footer>
+	<!--商品记录删除弹出框-->
+	<div class="modal" id="delectmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">您确定要撤销该投诉吗？</h4>
+				</div>
+				<div class="modal-body">
+					<p>撤销后，平台将不再介入处理</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-custom btn-sm" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-custom2 btn-sm" data-dismiss="modal" id="ok">确认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal_bg"></div>
+	<!--投诉按钮 end-->
+	<script>
+		$(function() {
+			// IE存在缓存问题,页面初始化时重置一下
+			loadPage();
+		});
+		//加载列表数据
+		function loadPage() {
+			//var complainUuid = "6a4720eb13004412a254b04d0fb74d25";
+			var complainUuid = getRequestParam("uuid");
+			var url=getProjectPath()+"/app/complain/getComplainDetailData/"
+			+ complainUuid;
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{ranNum : Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					var complain = eval(data);
+					var html = "<ul>"
+							+ "<li>订单号<span class='y_ms'>"+complain.orderNo+"</span></li>"
+							+ "<li>投诉酷商<span class='y_ms'>"+complain.storeName+"</span></li>"
+							+ "<li>投诉状态<span class='y_ms'><span class='text-success'>"+complain.stateName+"</span></span></li>"
+							+ "</ul>"
+							+ "<ul>"
+							+ "<li>投诉类型<span class='y_ms'>"+complain.complainTypeName+"</span></li>"
+							+ "<li>投诉标题<span class='y_ms'>"+complain.complainTitle+"</span></li>"
+							+ "<li>投诉内容<span class='y_ms'>"+complain.complainReason+"</span></li>"
+							+ "<li>投诉时间<span class='y_ms'>"+complain.complainTime+"</span></li>"
+							+ "<li>"
+							+ "投诉凭证"
+							+ "<section class='y_showpiclist clearfix'>"
+							+ "<span><img src="+complain.image1Url+"></span>"
+							+ "<span><img src="+complain.image2Url+"></span>"
+							+ "<span><img src="+complain.image3Url+"></span>"
+							+ "</section>"
+							+ "</li>" + "</ul>";
+					$("#HiddencomplaintUuid").val(complainUuid);
+					$("#dataSpace")
+							.append(html);
+					if(complain.state ==1){
+						$("#toCancleComplaint").show();
+					}
+				}
+			});
+		}
+		
+		$(function(){
+			$("[data-toggle='modal']").click(function(){
+				$(".modal,.modal_bg").addClass("fade");
+			});
+			$("[data-dismiss='modal']").click(function(){
+				$(".modal,.modal_bg").removeClass("fade");
+			});
+		});
+		
+		//撤销投诉
+		function cancel(){
+			var uuid=$("#HiddencomplaintUuid").val();
+			$("#delectmodal").modal('show');
+		}
+		
+		$("#ok").click(function(){
+			var uuid =$("#HiddencomplaintUuid").val();
+			var url=getProjectPath()+"/app/complain/cancelComplaint/"+uuid+"";
+			$.ajax({
+				type:"get",
+				async:false,
+				url:url,
+				data:{ranNum : Math.random()},
+				jsonp:"jsonpcallback",
+				dataType : "jsonp",//数据类型为jsonp
+				success : function(data){
+					if(data=="success"){
+						App.run('goCancelComplaintSuccess', {});
+					}else{
+						//调用原生接口
+						window.js_invoke.shouToast("提交失败!");
+					}
+					
+					
+				}
+			});
+			
+		});
+	</script>
+</body>
+</html>

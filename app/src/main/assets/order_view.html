@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-订单详情</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--列表信息-->
+	<nav class="y_orderviewlist">
+		<ul>
+			<li>酷商名称<span class="y_ms" id="storeName"></span></li>
+			<li>应付金额<span class="y_ms"><span class="f_color1" id="payMoney"></span></span></li>
+			<li>订单状态<span class="y_ms"><span class="text-success" id="orderStatusName"></span></span></li>
+		</ul>
+		<ul>
+			<li>订单号<span class="y_ms" id="orderId"></span></li>
+			<li>下单时间<span class="y_ms" id="orderTime"></span></li>
+			<li>收货人<span class="y_ms" id="consignee"></span></li>
+			<li>联系电话<span class="y_ms" id="mobile"></span></li>
+			<li>收货地址<span class="y_ms" id="address"></span></li>
+			<li>发票类型<span class="y_ms" id="invoiceType"></span></li>
+		</ul>
+	</nav><!--列表信息-->
+	
+	<!--商品信息-->
+	<nav class="y_orderproductlist">
+		<ul id="dataSpace">
+		</ul>
+	</nav><!--商品信息-->
+	
+	
+	<!--投诉按钮-->
+	<footer class="y_orderbtnbox">
+		<div class="y_orderbtn">
+			<a href="#" class="btn btn-custom">我要投诉</a>
+		</div>
+	</footer><!--投诉按钮 end-->
+	
+	
+<script>
+
+$(function(){
+	loadData();
+});
+
+function loadData(){
+	
+	var orderUuid = getRequestParam('orderUuid');
+	var showWhich = getRequestParam('showWhich');
+	// 项目路径
+	var url=getProjectPath()+"/app/order/getOrderDetailData";
+	$.ajax({
+		type:"get",
+		async:false,
+		url:url,
+		data:{orderUuid:orderUuid,showWhich:showWhich,ranNum:Math.random()},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success : function(data){
+			fillInfo(data);
+			$.each(eval(data.detailList), function(i, detail) {
+				fillDetail(detail);
+	        });
+		}
+	});
+	/* var projectPath = getProjectPath(); 
+	var orderUuid = getRequestParam('orderUuid');
+	var showWhich = getRequestParam('showWhich');
+	var url=projectPath+"/app/order/getOrderDetailData";
+	$.getJSON(url,{orderUuid:orderUuid,showWhich:showWhich,ranNum:Math.random()},function(data){
+		fillInfo(data);
+		$.each(eval(data.detailList), function(i, detail) {
+			fillDetail(detail);
+        });
+	}); */
+}
+
+// 封装订单主信息
+function fillInfo(obj){
+	$("#storeName").html(obj.main.storeName);
+	$("#payMoney").html("¥"+obj.main.payMoney);
+	
+	var state = obj.main.state;
+	$("#orderStatusName").removeClass()
+	// 根据订单状态装填不同样式
+	if(state == '1'){
+		$("#orderStatusName").addClass("y_orderstate text-warning");
+	}else if(state == '7'){
+		$("#orderStatusName").addClass("y_orderstate text-success");
+	}else if(state == '8'){
+		$("#orderStatusName").addClass("y_orderstate f_clr93");
+	}else{
+		$("#orderStatusName").addClass("y_orderstate text-333");
+	}
+	$("#orderStatusName").html(obj.main.orderStatusName);
+	
+	$("#orderId").html(obj.main.orderId);
+	$("#orderTime").html(obj.main.orderTime);
+	$("#consignee").html(obj.address.name);
+	$("#mobile").html(obj.address.mobile);
+	$("#address").html(obj.address.address);
+	if(obj.main.invoiceType == ''){
+		$("#invoiceType").html("无发票信息");
+	}else if(obj.main.invoiceType == '1'){
+		$("#invoiceType").html("普通发票");
+	}else if(obj.main.invoiceType == '2'){
+		$("#invoiceType").html("电子发票");
+	}else if(obj.main.invoiceType == '3'){
+		$("#invoiceType").html("增值税发票");
+	}
+}
+
+// 封装订单详细信息
+function fillDetail(detail){
+	var specInfo = "";
+	if(detail.spec != ''){
+		$.each(eval(detail.spec), function(i, spec) {
+			specInfo = specInfo + spec.name +"："+spec.value;
+			// 如果不是最后一条信息,则需要在后面加个分号
+			if(i+1 < (eval(detail.spec)).length){
+				specInfo = specInfo + "；";
+			}
+	    });
+	}
+	var html = "<li>";
+		html +=	"<div class='y_pic'><img src='"+detail.imageUrl+"'></div>";
+		html +=	"<div class='y_ms'>";
+		html +=	"<h2>"+detail.productName+"</h2>";
+		html +=	"<p class='y_note'><strong>¥"+(detail.basePrice-detail.freeMoney)+"</strong>x"+detail.buyNum+"</p>";
+		html +=	"<p class='y_specif'>"+specInfo+"</p>";
+		html +=	"</div>";
+		html +=	"</li>";
+	$("#dataSpace").append(html);
+}
+
+</script>
+</body>
+</html>

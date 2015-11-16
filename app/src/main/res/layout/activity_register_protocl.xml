@@ -1,0 +1,45 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/input_bg"
+    >
+    <LinearLayout
+        android:id="@+id/register_protocl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/login_content_margin_left"
+            android:layout_marginRight="@dimen/login_content_margin_right"
+            android:layout_marginTop="@dimen/register_content_margin_top"
+            android:layout_marginBottom="@dimen/register_content_margin_bottom"
+            android:gravity="center_horizontal" >
+            <!-- password -->
+            <WebView
+                    android:id="@+id/webview_register_protocl"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@color/white"
+                     style="@style/webview_layout_edittext_style"
+           />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_register_protocl_agree"
+            style="@style/redbutton"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/verification_layout"
+            android:layout_marginTop="@dimen/register_protocl_btn"
+            android:text="@string/agree"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"/>
+        <!-- login_button -->
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,180 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-我的订单</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--tab切换-->
+	<section class="m_sort tabsize_2">
+		<ol id="topbut">
+			<li class="active"><a href="javascript:void(0);" onclick="getPage(this,'mine')">我的订单</a></li>
+			<li><a href="javascript:void(0);" onclick="getPage(this,'share')">顾客订单</a></li>
+		</ol>
+	</section><!--tab切换 end-->
+	
+	<!-- 列表由js动态装填 -->
+	<section id="view">
+	</section>
+
+<input type="hidden" id="pageNo" value="2"/>
+<input type="hidden" id="showWhich" value="mine"/>		
+	
+<script>
+
+$(function(){
+	// 初始化列表样式
+	fillSection('hava');
+	// IE存在缓存问题,页面初始化时重置一下
+	$("#pageNo").val("2");
+	$("#showWhich").val("mine");
+	
+	loadPage(1);
+});
+
+// 根据有无数据动态该变列表样式
+function fillSection(type){
+	var html = "";
+	if(type == 'hava'){
+		$("#view").removeClass().addClass("y_orderlist");
+		html += "<ul id='dataSpace'>";
+		html += "</ul>";
+		html += "<ol style='text-align: center;'>";
+		html += 	"<span id='loadingImg' style='display: none; line-height: 38px;'>";
+		html += 		"<img src='img/loading.gif'><b style='padding-left:5px;font-weight: normal;'>加载中...</b>";
+		html += 	"</span>";
+		html += "</ol>";
+		html += "<ol style='text-align: center;'>";
+		html += 	"<span id='noNewData' style='display: none;'>暂无其他订单</span>";
+		html += "</ol>";
+	}else{
+		$("#view").removeClass().addClass("list_none");
+		html += "<div class='list_none_pic'><img src='img/none.png'></div>";
+		html += "<div class='list_none_tit y_mb10'>暂无订单</div>";
+	}
+	$("#view").html(html);
+}
+
+// 点击不同页签查看
+function getPage(obj,showWhich){
+	// 初始化列表样式
+	fillSection('hava');
+	
+	$("#topbut li").removeClass("active");
+	$(obj.parentNode).addClass("active");
+	
+	$("#pageNo").val("2");
+	$("#showWhich").val(showWhich);
+	
+	$("#dataSpace").empty();
+	
+	loadPage(1);
+}
+
+$.ajaxSettings.async = false; 
+// 检查加载是否完成
+var finished = true;
+// 下拉触发
+$(document).ready(function (){
+	var height=$(".y_orderlist").height();
+	$(document).scroll(function (){
+		if(finished && $(document).scrollTop()>=$(document).height()-$(window).height()){
+			finished = false;
+			$("#loadingImg").show();
+			setTimeout(function(){
+				var pageNo = $("#pageNo").val();
+				loadPage(pageNo);
+				$("#pageNo").val(Number($("#pageNo").val())+1);
+				$("#loadingImg").hide();
+			}, 800);
+		}
+	});
+});
+
+//加载列表数据
+function loadPage(nowPage){
+	// 项目路径
+	//var projectPath = getProjectPath(); 
+	var pageShow = parseInt("5");
+	var showWhich = $("#showWhich").val();
+	
+	//var url=projectPath+"/app/order/getOrderData/"+nowPage+"/"+pageShow;
+	var url=getProjectPath()+"/app/order/getOrderData/"+nowPage+"/"+pageShow;
+	$.ajax({
+		type:"get",
+		async:false,
+		url:url,
+		data:{showWhich:showWhich,ranNum:Math.random()},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success : function(data){
+			var haveData = 0;
+			$.each(eval(data), function(i, order) {
+				haveData++;
+				var html = "<li>";
+					//html +=	"<a href='order_view.html?orderUuid="+order.uuid+"&showWhich="+showWhich+"'>";
+					html +=	"<a href='javascript:goOrderDetail(\""+order.uuid+"\",\""+showWhich+"\")'>";
+					html +=	"<header>";
+					html +=	"<span class='y_item'>订单号：<strong>"+order.orderId+"</strong></span>	";
+					html +=	"</header>";
+					html +=	"<div class='y_orderbody'>";
+					html +=	"<span class='y_item size_1'>下单人：<strong>"+order.customerName+"</strong></span>	";
+					html +=	"<span class='y_item size_2'>应付金额：<strong>¥"+order.payMoney+"</strong></span>	";
+					html +=	"<span class='y_item size_1'>收货人：<strong>"+order.address.name+"</strong></span>	";
+					html +=	"<span class='y_item size_2'>联系方式：<strong>"+order.address.mobile+"</strong></span>	";
+					html +=	"<span class='y_item size_3'>收货地址：<strong>"+order.address.address+"</strong></span>	";
+					html +=	"<span class='y_item size_3'>下单时间：<strong>"+order.orderTime+"</strong></span>	";
+				// 根据订单状态改变样式
+				if(order.state=='1'){
+					html += "<label class='y_orderstate text-warning'>"+order.orderStatusName+"</label></div></a></li>";
+				}else if(order.state=='7'){
+					html += "<label class='y_orderstate text-success'>"+order.orderStatusName+"</label></div></a></li>";
+				}else if(order.state=='8'){
+					html += "<label class='y_orderstate f_clr93'>"+order.orderStatusName+"</label></div></a></li>";
+				}else{
+					html += "<label class='y_orderstate text-333'>"+order.orderStatusName+"</label></div></a></li>";
+				}
+				
+				$("#dataSpace").append(html);
+				finished = true;
+	        });
+			
+			if(haveData == 0){
+				if(nowPage== 1){
+					//若是初始化列表时就没有数据,则页面风格修改为无订单样式
+					fillSection('none');
+				}else{
+					$("#noNewData").show();
+					setTimeout(function(){
+						$("#noNewData").hide();
+					}, 400);
+				}
+				finished = false;
+			}
+		}
+	});
+	
+}
+//跳转订单详情页面
+function goOrderDetail(orderUuid,showWhich){
+	//调用原生接口
+	App.run('goOrderDetail', {orderUuid：orderUuid,showWhich:showWhich});
+}
+
+</script>
+		
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-我的客户</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<section class="y_customerlist">
+		<ul>
+			<!-- 
+			<li>
+				<h2>张三</h2>
+				<span class="y_item">成交金额：<strong>¥39000.00</strong></span>	
+				<span class="y_item">最后下单时间：<strong>2015-09-28 18:00</strong></span>	
+				<p class="y_addmoney">+1990.00</p>
+			</li>
+			<li>
+				<h2>李四</h2>
+				<span class="y_item">成交金额：<strong>¥39000.00</strong></span>	
+				<span class="y_item">最后下单时间：<strong>2015-09-28 18:00</strong></span>	
+				<p class="y_addmoney">+1990.00</p>
+			</li>
+			<li>
+				<h2>王五</h2>
+				<span class="y_item">成交金额：<strong>¥39000.00</strong></span>	
+				<span class="y_item">最后下单时间：<strong>2015-09-28 18:00</strong></span>	
+				<p class="y_addmoney">+1990.00</p>
+			</li>
+			<li>
+				<h2>张某某</h2>
+				<span class="y_item">成交金额：<strong>¥39000.00</strong></span>	
+				<span class="y_item">最后下单时间：<strong>2015-09-28 18:00</strong></span>	
+				<p class="y_addmoney">+1990.00</p>
+			</li>
+			 -->
+		</ul>
+		<!-- <ol style="text-align: center;">
+			<img id="loadingGif" alt="加载中..."  src="${pageContext.servletContext.contextPath}/static/frontpage/img/prettyPhoto/default/loader.gif" style="display: none;" >
+			<span id="loadingWenzi" style="display: none;">已加载完毕</span>
+		</ol> -->	
+	</section>
+	<!--列表无内容结构-->
+	<section class="list_none" style="display:none" id="distribution_good_nothing">
+		<div class="list_none_pic"><img src="img/none.png"></div>
+		<div class="list_none_tit y_mb10">暂无客户~~</div>
+	</section>
+	<section class="y_loading" style="display: none;">
+		<img id="my_customer_loading" src="img/loading.gif"> 加载中...
+	</section>
+	<input type="hidden" id="pageNo" value="1"/>
+</body>
+<script>
+	var flag=true;
+	$(function(){
+
+		$("#pageNo").val("1");
+		var pageShow = "6";
+		loadData(0,pageShow,'createTime');
+		var height =$(".y_customerlist").height();
+		$(document).scroll(function(){
+			
+			if(flag&& $(document).scrollTop()>=$(document).height()-$(window).height()){
+				$(".y_loading").show();
+				flag=false;
+				setTimeout(function(){
+					var pageNo = $("#pageNo").val();
+					loadData(pageNo,pageShow,"");
+					$(".y_loading").hide();
+					$("#pageNo").val(Number($("#pageNo").val())+1);
+				},1000);
+			}
+			
+		});
+	})
+	
+	//加载列表数据
+	function loadData(nowPage,pageShow,orderType){
+		var url=getProjectPath()+"/app/mycustomer/toMyList";
+		$.ajax({
+			type:"get",
+			async:false,
+			url:url,
+			data:{"pageNo": nowPage, "pageShow": pageShow},
+			jsonp:"jsonpcallback",
+			dataType : "jsonp",//数据类型为jsonp
+			success : function(json){
+				var result=eval(json);
+				if(result !=null && "" !=result){
+					$(".list_none").hide();
+					var data="";
+					 $.each(result, function(i, field){
+							data+="<li>";
+							data+="<h2>"+field.customerName+"</h2>";
+							data+="<span class='y_item'>成交金额：<strong>¥"+field.payMoney+"</strong></span>";
+							data+="<span class='y_item'>首次购买时间：<strong>"+field.time+"</strong></span>";
+							/* data+="<p class='y_addmoney'>+1990.00</p>"; */
+							data+="</li>";
+						});
+					 	$(".y_customerlist ul").append(data);
+					 	flag=true;
+				}else{
+					$(".y_loading").hide();
+					if(nowPage==0){
+						$(".list_none").show();
+					}
+					flag=false;
+				}
+			},
+			error: function(json) {
+				
+					$(".y_loading").hide();
+					if(nowPage==0){
+						$(".list_none").show();
+					}
+					flag=false;
+				
+				} 
+		});
+	}
+</script>
+</html>

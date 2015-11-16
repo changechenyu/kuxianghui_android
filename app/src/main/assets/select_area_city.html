@@ -1,0 +1,140 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-选择地区2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<section class="y_selece_areabox">
+		<div class="y_selece_area">
+			<h2>广东</h2>
+		</div>
+	</section>
+	<!--地区列表-->
+	<section class="y_arealist">
+		<header>市</header>
+		<ul id="city">
+			<!-- <li><a href="#">广州市</a></li>
+			<li><a href="#">深圳市</a></li>
+			<li><a href="#">珠海市</a></li>
+			<li><a href="#">韶关市</a></li>
+			<li><a href="#">河源市</a></li>
+			<li><a href="#">梅州市</a></li>
+			<li><a href="#">珠海市</a></li>
+			<li><a href="#">韶关市</a></li>
+			<li><a href="#">河源市</a></li>
+			<li><a href="#">梅州市</a></li>
+			<li><a href="#">韶关市</a></li>
+			<li><a href="#">河源市</a></li>
+			<li><a href="#">梅州市</a></li>
+			<li><a href="#">珠海市</a></li>
+			<li><a href="#">韶关市</a></li>
+			<li><a href="#">河源市</a></li>
+			<li><a href="#">梅州市</a></li> -->
+		</ul>
+	</section><!--地区列表 end-->
+	<input type="hidden" id="pageNo" value="2"/>
+	<!--确定按钮-->
+	<footer class="y_fixedbtnbox">
+		<div class="y_fixedbtn">
+			<a class="btn btn-custom2 btn-block ok">确定</a>
+		</div>
+	</footer>
+	
+	<script>
+		$(function(){
+			var fromPage=getRequestParam("fromPage");
+			$(".ok").click(function(){
+				var provinceUuid=getRequestParam("provinceUuid");
+				//$(this).attr("href",""+fromPage+".html?areaCode="+provinceUuid+"");
+			});
+			
+			$(window).scroll(function(){
+				var s_top = $(".y_header").height();
+				if($(window).scrollTop() >= s_top){
+					$(".y_selece_areabox").addClass("y_selece_areafix");
+				}else{
+					$(".y_selece_areabox").removeClass("y_selece_areafix");
+				};
+			});
+			var flag=true;
+			
+			var provinceUuid=getRequestParam("provinceUuid");
+			var pageShow = "10";
+			loadCity("1",pageShow,provinceUuid);
+			var height =$("#y_arealist").height();
+			
+			$(document).scroll(function (){
+				
+				if(flag && $(document).scrollTop()>=$(document).height()-$(window).height()){
+					var pageNo = $("#pageNo").val();
+					setTimeout(function(){
+						var pageNo = $("#pageNo").val();
+						loadCity(pageNo,pageShow,provinceUuid);
+						$("#pageNo").val(Number($("#pageNo").val())+1);
+							
+					}, 1000);
+				}
+			});
+			
+			function loadCity(pageNo,pageShow,provinceUuid){
+				var url=getProjectPath()+"/app/locationarea/toCityList";
+				$.ajax({
+					type:"get",
+					async:false,
+					url:url,
+					data:{ "pageNo": pageNo, "pageShow": pageShow,"provinceUuid":provinceUuid},
+					jsonp:"jsonpcallback",
+					dataType : "jsonp",//数据类型为jsonp
+					success : function(data){
+						var result=eval(data);
+						if(result !=null && "" !=result){
+							$("h2").text(data[0].provinceName);
+							 $.each(data, function(i, city){
+								//var html="<li><a href='select_area_region.html?cityUuid="+city.uuid+"&&fromPage="+fromPage+"'>"+city.cityName+"</a></li>";
+								var html="<li><a href='javascript:goSelectAreaCity(\""+city.uuid+"\",\""+fromPage+"\")'>"+city.cityName+"</a></li>";
+						 			$("#city").append(html);
+								});
+						}else{
+							flag=false;
+							return;
+						}
+					}
+				});
+				/* $.getJSON(getProjectPath() + "/app/locationarea/toCityList", { "pageNo": pageNo, "pageShow": pageShow,"provinceUuid":provinceUuid}, function(data){
+					if(data==null || data==""){
+						flag=false;
+						return;
+					}
+					$("h2").text(data[0].provinceName);
+					 $.each(data, function(i, city){
+						//var html="<li><a href='select_area_region.html?cityUuid="+city.uuid+"&&fromPage="+fromPage+"'>"+city.cityName+"</a></li>";
+						var html="<li><a href='javascript:goSelectArea(\""+city.uuid+"\",\""+fromPage+"\")'>"+city.cityName+"</a></li>";
+				 			$("#city").append(html);
+						});
+				 
+				}); */
+			}
+		});	
+		
+		//跳转到市-区列表
+		function goSelectAreaCity(uuid,pageName){
+			//调用原生接口
+			App.run('goSelectAreaCity', {uuid:uuid,pageName:pageName});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-反馈建议</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--列表信息-->
+	<nav class="y_complaintlist">
+ 		<ul>
+ 			<li>
+ 				<h2>您遇到的问题或者改进的建议</h2>
+ 				<textarea class="form-control" rows=5 id="feedBackContent"></textarea>
+ 			</li>
+ 			<li>
+ 				<h2>您的联系方式（选填）</h2>
+ 				<input type="text" class="form-control" placeholder="手机/邮箱/QQ" id="feedBackTelephone">
+ 			</li>
+ 		</ul>
+ 		<a id ="feedBackSubmitButton" href="#" class="btn btn-custom2 btn-block">提交</a>
+	</nav><!--列表信息-->
+</body>
+<script type="text/javascript">
+$("#feedBackSubmitButton").click(function(){
+	var content=$("#feedBackContent").val();
+	if(content==""){
+		showToast("请输入内容");
+		return false;
+	}
+	var url=getProjectPath()+"/app/feedback/add";
+	$.ajax({
+		type:"post",
+		async:false,
+		url:url,
+		data:{"content":$("#feedBackContent").val(),"telephone":$("#feedBackTelephone").val()},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success : function(data){
+			if(data){
+				//window.location.replace("feedback_operation_success.html");
+				goFeedbackSuccess();
+			}
+		}
+	});
+	/* $.post(getProjectPath() + "/app/feedback/add",{"content":$("#feedBackContent").val(),"telephone":$("#feedBackTelephone").val()},function(data,status){
+		if(data){
+			//window.location.replace("feedback_operation_success.html");
+			goFeedbackSuccess();
+		}
+	}); */
+});
+
+//跳转到分销计划详情页
+function goFeedbackSuccess(){
+	//调用原生接口
+	App.run('goFeedbackSuccess', {});
+}
+
+//弹出框
+function showToast(message){
+	//调用原生接口
+	App.run('showToast', {message:message});
+
+}
+</script>
+</html>

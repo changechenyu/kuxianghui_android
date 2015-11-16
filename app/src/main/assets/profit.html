@@ -1,0 +1,219 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-我的收益</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--账户余额-->
+	<section class="y_accountbalac">
+		<p>
+			账户余额
+			<strong></strong>	
+		</p>
+		<a href="javascript:goWithdrawApply()" class="btn btn-custom2 disabled">提现</a>	
+	</section>
+	<!--账户余额 end-->
+	
+	<ul class="y_accountms">
+		<li><span></span>总收益</li>
+		<li><span></span>预计收益</li>
+		<li><span></span>近一个月收益</li>	
+	</ul>
+	
+	<!--收益列表-->
+	<section class="y_accountbox">
+		<ul class="y_accounttit">
+			<li>日期</li>	
+			<li>金额</li>	
+			<li>备注</li>	
+		</ul>
+		<ul class="y_accountlist">
+			
+		</ul>
+	</section>
+	<!--收益列表 end-->
+	
+	<!--列表无内容结构-->
+	<section class="list_none">
+		
+	</section>
+	<!--列表无内容结构 end-->
+	
+<input type="hidden" id="nowPage" value="0"/>
+<input type="hidden" id="pageShow" value="10"/>
+
+<script type="text/javascript">
+$(function(){
+	getAccountInfo();
+	getAccountLog();
+	
+	$(document).scroll(function(){
+		 var scrollTop = $(document).scrollTop();
+	     var windowHeight = $(window).height();
+	     var scrollHeight = $(document).height();
+	     
+	     if (scrollTop + windowHeight >= scrollHeight) {
+	    	 getAccountLog();
+	     } 
+	});
+})
+
+function getAccountInfo(){
+	var url=getProjectPath()+"/app/customeraccount/getAccountInfo";
+	$.ajax({
+		type:"get",
+		async:false,
+		url:url,
+		data:{ranNum:Math.random()},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success : function(json){
+			var data=eval(json);
+			var str ="<span>￥</span>" + data.account.accountBalance;
+			if(data.account.accountBalance >0){
+				$(".y_accountbalac").find("a").removeClass("disabled");
+			}
+			$(".y_accountbalac").find("strong").html(str);
+			$(".y_accountms").find("li:eq(0)").find("span").html("￥"+data.totalincome);
+			$(".y_accountms").find("li:eq(1)").find("span").html("￥"+data.expectincome);
+			$(".y_accountms").find("li:eq(2)").find("span").html("￥"+data.monthincome);
+		}
+	});
+	/* $.getJSON(getProjectPath() + "/app/customeraccount/getAccountInfo",{random:Math.random()},function(data){
+		var str ="<span>￥</span>" + data.account.accountBalance;
+		$(".y_accountbalac").find("strong").html(str);
+		$(".y_accountms").find("li:eq(0)").find("span").html("￥"+data.totalincome);
+		$(".y_accountms").find("li:eq(1)").find("span").html("￥"+data.totalpay);
+		$(".y_accountms").find("li:eq(2)").find("span").html("￥"+data.monthincome);
+	}); */
+}
+
+function getAccountLog(){
+	var nowPage = $("#nowPage").val();
+	var pageShow = $("#pageShow").val();
+	var url=getProjectPath()+"/app/customeraccount/getAccountLogs";
+	$.ajax({
+		type:"get",
+		async:false,
+		url:url,
+		data:{nowPage:nowPage,pageShow:pageShow},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success : function(json){
+			var data=eval(json);
+			if(data.list.length > 0){
+		   		  $.each(data.list,function(k,v){
+			  			//var str = "<li><a href='profit_view.html?uuid=" + v.uuid + "'>"
+			  			var str = "<li><a href='javascript:goProfitDetail(\""+v.uuid+"\")'>"
+			  				str +="<span>" + v.opeTime + "</span>";
+			  				str +="<span class='text-success'>" + v.operAmount + "</span>";
+			  				
+			  				$.each(data.profitType,function(key,value){
+			  					if(key==v.operType){
+					  				str +="<span>"+ value +"</span>";
+			  					}
+			  				});
+			  				
+			  				$(".y_accountlist").append(str);
+			  		  }); 
+		   		  $("#nowPage").val(parseInt($("#nowPage").val()) + 1);
+		   	  }else{
+			   	  var str ='<div class="list_none_pic"><img src="img/none.png"></div>';
+				  	  str +='<div class="list_none_tit y_mb10">暂无记录，快去逛逛吧~~</div>';
+				  	 // str +='<a href="index.html" class="btn btn-custom2 btn-block y_mb10">去购物</a>';
+				  	 str +='<a href="javascript:goIndex()" class="btn btn-custom2 btn-block y_mb10">去购物</a>';
+				  $(".list_none").html(str);
+		   	  } 
+		}
+	});
+	/* $.getJSON(getProjectPath() + "/app/customeraccount/getAccountLogs",{nowPage:nowPage,pageShow:pageShow},function(data){
+		 if(data.list.length > 0){
+	   		  $.each(data.list,function(k,v){
+		  			//var str = "<li><a href='profit_view.html?uuid=" + v.uuid + "'>"
+		  			var str = "<li><a href='javascript:goProfitDetail(\""+v.uuid+"\")'>"
+		  				str +="<span>" + v.opeTime + "</span>";
+		  				str +="<span class='text-success'>" + v.operAmount + "</span>";
+		  				
+		  				$.each(data.profitType,function(key,value){
+		  					if(key==v.operType){
+				  				str +="<span>"+ value +"</span>";
+		  					}
+		  				});
+		  				
+		  				$(".y_accountlist").append(str);
+		  		  }); 
+	   		  $("#nowPage").val(parseInt($("#nowPage").val()) + 1);
+	   	  }else{
+		   	  var str ='<div class="list_none_pic"><img src="img/none.png"></div>';
+			  	  str +='<div class="list_none_tit y_mb10">暂无记录，快去逛逛吧~~</div>';
+			  	 // str +='<a href="index.html" class="btn btn-custom2 btn-block y_mb10">去购物</a>';
+			  	 str +='<a href="javascript:goIndex()" class="btn btn-custom2 btn-block y_mb10">去购物</a>';
+			  $(".list_none").html(str);
+	   	  } 
+	}); */
+	
+	
+	
+	
+	/* $.ajax({  
+	      type:'get',  
+	      url:'customeraccount/getAccountLogs',  
+	      data:{nowPage:nowPage,pageShow:pageShow},  
+	      cache:false,  
+	      dataType:'json', 
+	      success:function(data){  
+	    	  if(data.list.length > 0){
+	    		  $.each(data.list,function(k,v){
+    	  			var str = "<li><a href='profit_view.html?uuid=" + v.uuid + "'>"
+    	  				str +="<span>" + v.opeTime + "</span>";
+    	  				str +="<span class='text-success'>" + v.operAmount + "</span>";
+    	  				str +="<span>"+ v.description +"</span>";
+    	  				
+    	  				$(".y_accountlist").append(str);
+    	  		  }); 
+	    		  $("#nowPage").val(parseInt($("#nowPage").val()) + 1);
+	    	  }else{
+	    		  $(".y_accountlist").append('暂无数据');
+	    	  }
+	       },  
+	       error:function(){
+	    	   $(".y_accountlist").append('暂无数据');
+	       }  
+	 });  */
+}
+
+//跳转到收益详情页
+function goProfitDetail(uuid){
+	//调用原生接口
+	App.run('goProfitDetail', {uuid：uuid});
+}
+
+//跳转到首页
+function goIndex(){
+	//调用原生接口
+	App.run('goIndex', {});
+}
+
+//跳转提现申请页面
+function goWithdrawApply(){
+	//调用原生接口
+	App.run('goWithdrawApply', {});
+}
+</script>	
+	
+</body>
+</html>

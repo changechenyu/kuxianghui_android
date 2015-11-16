@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/whole_back" >
+
+    <fragment
+            android:id="@+id/fragement_home"
+            android:name="com.kuyu.kuxianghui.ui.fragment.HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/main_tabcontent_padding_bottom" />
+
+    <fragment
+            android:id="@+id/fragement_market"
+            android:name="com.kuyu.kuxianghui.ui.fragment.MarketFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/main_tabcontent_padding_bottom" />
+
+    <fragment
+            android:id="@+id/fragement_cart"
+            android:name="com.kuyu.kuxianghui.ui.fragment.CartFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/main_tabcontent_padding_bottom" />
+
+    <fragment
+            android:id="@+id/fragement_mine"
+            android:name="com.kuyu.kuxianghui.ui.fragment.MineFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/main_tabcontent_padding_bottom" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/tab_line"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/main_radiogroup_height"/>
+    <RadioGroup
+            android:id="@+id/home_radio_button_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_radiogroup_height"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:background="@color/tab_back"
+            android:paddingTop="@dimen/main_radiogroup_margin_top"
+            android:orientation="horizontal" >
+        <RadioButton
+                android:id="@+id/home_tab_index"
+                style="@style/main_tab_bottom_style"
+                android:drawableTop="@drawable/home_tab_icon_selector"
+                android:checked="true"
+                android:text="@string/home" />
+        <!--<View-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@drawable/main_bottom_tab_line_normal" />-->
+        <RadioButton
+                android:id="@+id/home_tab_commodity"
+                style="@style/main_tab_bottom_style"
+                android:drawableTop="@drawable/market_tab_icon_selector"
+                android:text="@string/market" />
+
+
+        <RadioButton
+                android:id="@+id/home_tab_cart"
+                style="@style/main_tab_bottom_style"
+                android:drawableTop="@drawable/cart_tab_icon_selector"
+                android:text="@string/cart" />
+
+        <RadioButton
+                android:id="@+id/home_tab_mine"
+                style="@style/main_tab_bottom_style"
+                android:drawableTop="@drawable/mine_tab_icon_selector"
+                android:text="@string/mine" />
+    </RadioGroup>
+</FrameLayout>

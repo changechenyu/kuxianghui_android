@@ -1,0 +1,14 @@
+<resources>
+
+
+	<!-- share ativity -->
+	<dimen name="share_edittext_height">140dp</dimen>
+	<dimen name="share_content_margin_top">21dp</dimen>
+	<dimen name="share_layout_padding_bottom">21dp</dimen>
+	<dimen name="share_layout_padding_left">21dp</dimen>
+	<dimen name="share_layout_padding_right">21dp</dimen>
+	<dimen name="share_content_height">80dp</dimen>
+	<dimen name="share_button_height">227dp</dimen>
+	<dimen name="share_imageview_width">92dp</dimen>
+
+</resources>

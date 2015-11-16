@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>TCL酷享汇-收益详情</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-param.js" type="text/javascript"></script>
+<script src="js/app.lite.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<!--列表信息-->
+	<nav class="y_orderviewlist">
+		<ul>
+		</ul>
+	</nav><!--列表信息-->
+
+<script type="text/javascript" src="js/jquery-param.js"></script>
+<script>
+$(function(){
+	$.ajax({
+		type: 'get',
+		async:false,
+		url: getProjectPath() + '/app/customeraccount/getAccountLogDetail',
+		data: {uuid:getRequestParam('uuid'),ranNum:Math.random()},
+		jsonp:"jsonpcallback",
+		dataType : "jsonp",//数据类型为jsonp
+		success: function(data){
+			var str = "<li>单据号<span class='y_ms'>" + data.log.documentNo +"</span></li>";
+			str += "<li>创建时间<span class='y_ms'>"+ data.log.opeTime +"</span></li>";
+			$.each(data.profitType,function(key,value){
+				if(key==data.log.operType){
+  					str += "<li>收支类型<span class='y_ms'>"+ value +"</span></li>";
+				}
+			});
+			str += "<li>收入/支出(元)<span class='y_ms'><span class='f_color1'>￥"+ data.log.operAmount +"</span></span></li>";
+			str += "<li>当前余额(元)<span class='y_ms'>￥"+ data.log.nowBalance +"</span></li>";
+			$(".y_orderviewlist").find("ul").html(str);
+		},
+		error: function(){
+			$(".y_orderviewlist").find("ul").html('暂无数据');
+		}
+	});
+});
+
+</script>	
+</body>
+</html>

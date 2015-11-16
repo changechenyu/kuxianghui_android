@@ -1,0 +1,277 @@
+<ScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.kuyu.kuxianghui.ui.fragment.MineFragment">
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:background="@color/bg_app">
+
+		<RelativeLayout
+				android:id="@+id/rl_head"
+				android:layout_width="match_parent"
+				android:layout_height="210dp"
+				android:background="@drawable/bg">
+
+			<ImageView
+					android:id="@+id/ig_avatar"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_marginTop="38dp"
+					android:src="@drawable/avatar_dedault" />
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_below="@+id/ig_avatar"
+					android:layout_marginTop="10dp"
+					android:textColor="@color/white"
+					android:textSize="14sp"
+					android:text="@string/user_mobilephone" />
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="46dp"
+					android:gravity="center"
+					android:background="#26000000"
+					android:layout_alignParentBottom="true">
+
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:layout_weight="1">
+
+					<TextView
+							android:text="@string/num_0"
+							style="@style/text_mine_title" />
+
+					<TextView
+							style="@style/text_mine_sub_title"
+							android:text="@string/salary_total"
+							android:layout_marginTop="3dp" />
+				</LinearLayout>
+
+				<View
+						android:layout_width="0.5dp"
+						android:layout_height="30dp"
+						android:background="@color/white" />
+
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:layout_weight="1">
+
+					<TextView
+							android:text="@string/num_0"
+							style="@style/text_mine_title" />
+
+					<TextView
+							style="@style/text_mine_sub_title"
+							android:text="@string/customer_sum"
+							android:layout_marginTop="3dp" />
+				</LinearLayout>
+			</LinearLayout>
+		</RelativeLayout>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_marginTop="@dimen/gap_common"
+				android:background="@color/white">
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_customer">
+
+				<ImageView
+						android:id="@+id/iv_customer"
+						style="@style/mine_icon_left"
+						android:src="@drawable/user" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_customer"
+						android:layout_toRightOf="@+id/iv_customer" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+
+			<View
+					style="@style/mine_line" />
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_cash">
+
+				<ImageView
+						android:id="@+id/iv_money"
+						style="@style/mine_icon_left"
+						android:src="@drawable/deposit" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_get_money_history"
+						android:layout_toRightOf="@+id/iv_money" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+
+			<View
+					style="@style/mine_line" />
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_order">
+
+				<ImageView
+						android:id="@+id/iv_mine_order"
+						style="@style/mine_icon_left"
+						android:src="@drawable/order" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_order"
+						android:layout_toRightOf="@+id/iv_mine_order" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+
+			<View
+					style="@style/mine_line" />
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_income">
+
+				<ImageView
+						android:id="@+id/iv_mine_income"
+						style="@style/mine_icon_left"
+						android:src="@drawable/income" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_income"
+						android:layout_toRightOf="@+id/iv_mine_income" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+
+			<View
+					style="@style/mine_line" />
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_complain">
+
+				<ImageView
+						android:id="@+id/iv_mine_complaint"
+						style="@style/mine_icon_left"
+						android:src="@drawable/complaint" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_complaint"
+						android:layout_toRightOf="@+id/iv_mine_complaint" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_marginTop="@dimen/gap_common"
+				android:background="@color/white">
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_change_pwd">
+
+				<ImageView
+						android:id="@+id/iv_mine_change_pass"
+						style="@style/mine_icon_left"
+						android:src="@drawable/password" />
+
+				<TextView
+					    android:id="@+id/testchangepwd"
+						style="@style/text_mine_channel"
+						android:text="@string/mine_change_pass"
+						android:layout_toRightOf="@+id/iv_mine_change_pass" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+
+			<View
+					style="@style/mine_line" />
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_help">
+
+				<ImageView
+						android:id="@+id/iv_mine_help"
+						style="@style/mine_icon_left"
+						android:src="@drawable/help" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_help"
+						android:layout_toRightOf="@+id/iv_mine_help" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+
+			<View
+					style="@style/mine_line" />
+
+			<RelativeLayout
+					style="@style/mine_channel"
+				android:id="@+id/rl_feedback">
+
+				<ImageView
+						android:id="@+id/iv_mine_feedback"
+						style="@style/mine_icon_left"
+						android:src="@drawable/feedback" />
+
+				<TextView
+						style="@style/text_mine_channel"
+						android:text="@string/mine_feedback"
+						android:layout_toRightOf="@+id/iv_mine_feedback" />
+
+				<ImageView
+						style="@style/mine_arrow_right" />
+			</RelativeLayout>
+		</LinearLayout>
+
+		<Button
+				android:id="@+id/btn_logout"
+				android:layout_width="match_parent"
+				android:layout_marginLeft="15dp"
+				android:layout_marginTop="@dimen/gap_common"
+				android:layout_marginBottom="@dimen/gap_common"
+				android:layout_marginRight="15dp"
+				android:layout_height="wrap_content"
+				style="@style/redbutton"
+				android:text="@string/logout" />
+
+	</LinearLayout>
+</ScrollView>

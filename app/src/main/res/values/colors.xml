@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="whole_back">#eeeef0</color>
+
+	<color name="white">#ffffff</color>
+	<color name="actionbar_bg">#ededed</color>
+	<color name="divider_color">#11000000</color>
+
+	<color name="orange">#FF5F00</color>
+
+	<color name="black">#000000</color>
+	<color name="gray">#a0a0a0</color>
+
+	<color name="text_color">#FFFFFF</color>
+	<color name="brown">#FF4040</color>
+	<color name="tab_back">#ededed</color>
+	<color name="tab_text_nor">#666666</color>
+	<color name="tab_text_selected">#ff4040</color>
+	<color name="tab_line">#9f9f9f</color>
+
+	<color name="forget_password">#29b6f6</color>
+    <color name="changeone">#00B2EE</color>
+	<!-- Input layout -->
+	<color name="input_bg">#f2f2f2</color>
+	<color name="input_hint_text_color">#cccccc</color>
+	<color name="input_hint_text_color_register">#808080</color>
+	<color name="find_activity_line_color">#b3b3b3</color>
+
+	<color name="bg_app">#eeeef0</color>
+	<color name="text_33">#333333</color>
+	<color name="color_channel_pressed">#f2f2f2</color>
+	<color name="color_mine_line">#eeeef0</color>
+
+	<!-- 红色按钮里面的字体白色 -->
+	<color name="btn_red_normal">#ffffff</color>
+	<color name="btn_red_enabled">#ffffff</color>
+	<color name="btn_red_focused">#ffffff</color>
+	<color name="btn_red_pressed">#ffffff</color>
+	<color name="btn_red_activated">#ffffff</color>
+	<color name="btn_red_selected">#ffffff</color>
+	<color name="color_66">#666666</color>
+
+	<color name="color_33">#333333</color>
+	<color name="actionbar_line">#9f9f9f</color>
+	<color name="color_8f">#8f8f8f</color>
+	<color name="actionbar_pressed">#ededed</color>
+	<color name="color_99">#999999</color>
+
+</resources>
